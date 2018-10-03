@@ -118,7 +118,6 @@ public class Player extends CreatureBase {
 
             fireAttack();
 
-
         }
 
 
@@ -256,6 +255,22 @@ public class Player extends CreatureBase {
             xMove = -speed;
         if(handler.getKeyManager().right&&! attacking)
             xMove = speed;
+        
+        //Regain Health Debug
+        if (handler.getKeyManager().regenhealth) {
+        	if (health < 75) {
+        		health++;
+        	}
+        }
+        
+        //Give one of each item debug. FLAVIO WORK HERE DELETE THIS AFTERWARDS
+        if (handler.getKeyManager().addinventory) {
+        	for (Item i : getInventory().getInventoryItems()) {
+                i.setCount(i.getCount() + 1);
+        		
+        	}
+        }
+
     }
 
 

@@ -31,7 +31,6 @@ public class Item {
     public static Item rockItem = new Item(Images.blocks[14],"Rock",1);
     public static Item fireRuneItem = new Item(Images.Runes[2],"Fire Rune",2);
 
-
     //class
 
     public Item(BufferedImage texture, String name, int id){
@@ -63,6 +62,7 @@ public class Item {
             pickedUp=true;
             handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
         }
+        
     }
 
     public void render(Graphics g){
