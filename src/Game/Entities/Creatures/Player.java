@@ -263,8 +263,12 @@ public class Player extends CreatureBase {
         	}
         }
         
-        //Give one of each item debug. FLAVIO WORK HERE DELETE THIS AFTERWARDS
+        //Give one of each item debug.
         if (handler.getKeyManager().addinventory) {
+        	handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.fireRuneItem);
+        	handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.rockItem);
+        	handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.woodItem);
+        	
         	for (Item i : getInventory().getInventoryItems()) {
                 i.setCount(i.getCount() + 1);
         		
