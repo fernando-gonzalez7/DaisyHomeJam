@@ -263,16 +263,24 @@ public class Player extends CreatureBase {
         	}
         }
         
-        //Give one of each item debug.
-        if (handler.getKeyManager().addinventory) {
-        	handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.fireRuneItem);
-        	handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.rockItem);
-        	handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.woodItem);
+        //WIP: Debug give one of each item.
+        if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_X))
+        {
         	
-        	for (Item i : getInventory().getInventoryItems()) {
-                i.setCount(i.getCount() + 1);
-        		
+        	if (Item.fireRuneItem.getCount() != count || Item.rockItem.getCount() != count || Item.woodItem.getCount() != count)
+        	{
+        		handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.fireRuneItem);
+            	handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.rockItem);
+            	handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.woodItem);
+            	
+            	for (Item i : getInventory().getInventoryItems())
+            	{
+                    i.setCount(i.getCount() + 1);
+            		
+            	}
         	}
+        	
+        	
         }
 
     }
