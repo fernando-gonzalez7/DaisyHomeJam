@@ -280,13 +280,18 @@ public class Player extends CreatureBase {
             	
             	NoItems = false;
         	}
-        	for (Item i : getInventory().getInventoryItems())
+        	else if (NoItems == false)
         	{
-                i.setCount(i.getCount() + 1);
-        		
+        		for (Item i : getInventory().getInventoryItems())
+            	{
+                    i.setCount(i.getCount() + 1);
+                    
+            		if (i.getCount() == 0)
+            		{
+            			NoItems = true;
+            		}
+            	}
         	}
-        	
-        	
         }
 
     }
