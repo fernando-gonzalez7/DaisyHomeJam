@@ -2,6 +2,7 @@ package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
 import Game.Inventories.Inventory;
+import Game.Items.Item;
 import Main.Handler;
 import Resources.Animation;
 import Resources.Images;
@@ -19,24 +20,24 @@ public class SkelyEnemy extends CreatureBase  {
 
     private Boolean attacking=false;
 
-    private int animWalkingSpeed = 150;
+    private int animWalkingSpeed = 50;
     private Inventory Skelyinventory;
     private Rectangle SkelyCam;
 
-    private int healthcounter =0;
+    private int healthcounter = 0;
 
     private Random randint;
-    private int moveCount=0;
+    private int moveCount = 0;
     private int direction;
 
     public SkelyEnemy(Handler handler, float x, float y) {
-        super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT);
+        super(handler, x, y, 48, 44);
         bounds.x=8*2;
         bounds.y=18*2;
         bounds.width=16*2;
         bounds.height=14*2;
         speed=1.5f;
-        health=50;
+        health=10;
 
         SkelyCam= new Rectangle();
 
@@ -45,10 +46,12 @@ public class SkelyEnemy extends CreatureBase  {
         randint = new Random();
         direction = randint.nextInt(4) + 1;
 
-        animDown = new Animation(animWalkingSpeed, Images.SkelyEnemy_front);
-        animLeft = new Animation(animWalkingSpeed,Images.SkelyEnemy_left);
-        animRight = new Animation(animWalkingSpeed,Images.SkelyEnemy_right);
-        animUp = new Animation(animWalkingSpeed,Images.SkelyEnemy_back);
+        animDown = new Animation(animWalkingSpeed, Images.goomba_front);
+        animLeft = new Animation(animWalkingSpeed,Images.goomba_left);
+        animRight = new Animation(animWalkingSpeed,Images.goomba_right);
+        animUp = new Animation(animWalkingSpeed,Images.goomba_back);
+        
+        
 
         Skelyinventory= new Inventory(handler);
     }
@@ -59,7 +62,6 @@ public class SkelyEnemy extends CreatureBase  {
         animUp.tick();
         animRight.tick();
         animLeft.tick();
-
         moveCount ++;
         if(moveCount>=60){
             moveCount=0;
@@ -177,10 +179,10 @@ public class SkelyEnemy extends CreatureBase  {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight,Images.SkelyEnemy_front,Images.SkelyEnemy_back,Images.SkelyEnemy_left,Images.SkelyEnemy_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+        g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight, Images.goomba_front,Images.goomba_back,Images.goomba_left,Images.goomba_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
         if(isBeinghurt() && healthcounter<=120){
             g.setColor(Color.white);
-            g.drawString("SkelyHealth: " + getHealth(),(int) (x-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()-20));
+            g.drawString("Health: " + getHealth(),(int) (x-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()-20));
         }
     }
 
@@ -188,7 +190,9 @@ public class SkelyEnemy extends CreatureBase  {
 
 
     @Override
+    //THIS IS AN ITEM EXAMPLE
     public void die() {
+    	handler.getWorld().getItemManager().addItem(Item.woodItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
 
     }
 }

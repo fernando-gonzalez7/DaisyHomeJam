@@ -9,21 +9,31 @@ import java.io.IOException;
  * Created by Elemental on 12/19/2016.
  */
 public class Images {
-
-    private static final int width = 32, height = 32;
+	//Change default w/h to fit Mario
+    private static final int width = 56, height = 74;
+    
     private static final int Bwidth = 64, Bheight = 64;
     private static final int Rwidth = 56, Rheight = 93;
     private static final int Fwidth = 512, Fheight = 197;
 
     public static BufferedImage[] blocks;
+    
     public static BufferedImage[] player_right;
     public static BufferedImage[] player_left;
     public static BufferedImage[] player_front;
     public static BufferedImage[] player_back;
-    public static BufferedImage[] SkelyEnemy_right;
-    public static BufferedImage[] SkelyEnemy_left;
-    public static BufferedImage[] SkelyEnemy_front;
-    public static BufferedImage[] SkelyEnemy_back;
+    
+    //Idle Mario Variables
+    public static BufferedImage[] marioidle_right;
+    public static BufferedImage[] marioidle_left;
+    public static BufferedImage[] marioidle_front;
+    public static BufferedImage[] marioidle_back;
+    
+    public static BufferedImage[] goomba_right;
+    public static BufferedImage[] goomba_left;
+    public static BufferedImage[] goomba_front;
+    public static BufferedImage[] goomba_back;
+    
     public static BufferedImage[] butstart;
     public static BufferedImage[] particleSmoke;
     public static BufferedImage[] items;
@@ -56,24 +66,40 @@ public class Images {
         SpriteSheet FireBallRightsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallRight.png"));
         SpriteSheet FireBallUpsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallUp.png"));
         SpriteSheet FireBallDownsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallDown.png"));
+        
+        //Added sheets:
+        SpriteSheet mariorun = new SpriteSheet(Images.loadImage("/Sheets/MarioSheet.png"));
+        SpriteSheet goombasheet = new SpriteSheet(Images.loadImage("/Sheets/GoombaSheet.png"));
+        SpriteSheet tileset = new SpriteSheet(Images.loadImage("/Sheets/TileSet.png"));
+        
+        
 
 
 
-        blocks = new BufferedImage[15];
+        blocks = new BufferedImage[256];
+        
+        //Changed values
 
-        player_left = new BufferedImage[4];
-        player_right = new BufferedImage[4];
-        player_front = new BufferedImage[4];
-        player_back = new BufferedImage[4];
+        player_left = new BufferedImage[8];
+        player_right = new BufferedImage[8];
+        player_front = new BufferedImage[8];
+        player_back = new BufferedImage[8];
+        
+        //Added these
+        marioidle_left = new BufferedImage[1];
+        marioidle_right = new BufferedImage[1];
+        marioidle_front = new BufferedImage[1];
+        marioidle_back = new BufferedImage[1];
+        
 
-        SkelyEnemy_left = new BufferedImage[4];
-        SkelyEnemy_right = new BufferedImage[4];
-        SkelyEnemy_front = new BufferedImage[4];
-        SkelyEnemy_back = new BufferedImage[4];
+        goomba_left = new BufferedImage[8];
+        goomba_right = new BufferedImage[8];
+        goomba_front = new BufferedImage[8];
+        goomba_back = new BufferedImage[8];
 
         butstart = new BufferedImage[3];
         particleSmoke = new BufferedImage[3];
-        items = new BufferedImage[3];
+        items = new BufferedImage[30];
         numbers = new BufferedImage[21];
         Resume = new BufferedImage[2];
         BTitle = new BufferedImage[2];
@@ -107,7 +133,7 @@ public class Images {
             Options[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/OptionsP.png"));
 
             //icon
-            icon = new ImageIcon(runesheet.crop(Rwidth*1,Rheight*0,Rwidth,Rheight));
+            icon = new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/Sheets/MushroomIcon.png")));
 
             //fireball left
             FireBallLeft[0]= FireBallsheet.crop(Fwidth*0,Fheight*0,Fwidth,Fheight);
@@ -186,8 +212,8 @@ public class Images {
 
 
             //block images,array index is equal to block id
-            blocks[1] = newsheet.crop(0,324,Bwidth,Bheight);//grass
-            blocks[2] = newsheet.crop(67,260,Bwidth,Bheight);//dirt
+            blocks[1] = tileset.crop(1,1,Bwidth,Bheight); //Regular Grass
+            blocks[2] = tileset.crop(66,1,Bwidth,Bheight);//dirt
             blocks[3] = newsheet.crop(67,324,Bwidth,Bheight);//dirtrock
             blocks[4] = newsheet.crop(0,0,Bwidth,Bheight);//uppperleft
             blocks[5] = newsheet.crop(67,0,Bwidth,Bheight);//upperright
@@ -200,49 +226,89 @@ public class Images {
             blocks[12] = newsheet.crop(0,260,Bwidth,Bheight);//mossyrock
             blocks[13] = newsheet.crop(176,0,Bwidth,Bheight*2);//tree
             blocks[14] = newsheet.crop(174,410,78,74);//rock
+            blocks[15] = tileset.crop(66,1,Bwidth,Bheight);//Grass Flowers 1
 
 
-            //player anim
-            player_front[0]=newsheet.crop(132,131,width,height);
-            player_front[1]=newsheet.crop(164,131,width,height);
-            player_front[2]=newsheet.crop(196,131,width,height);
-            player_front[3]=newsheet.crop(228,131,28,height);
+            //Mario Animations
+            player_front[0]=mariorun.crop(2,2,width,height);
+            player_front[1]=mariorun.crop(60,2,width,height);
+            player_front[2]=mariorun.crop(118,2,width,height);
+            player_front[3]=mariorun.crop(176,2,width,height);
+            player_front[4]=mariorun.crop(234,2,width,height);
+            player_front[5]=mariorun.crop(292,2,width,height);
+            player_front[6]=mariorun.crop(350,2,width,height);
+            player_front[7]=mariorun.crop(408,2,width,height);
 
-            player_left[0]=newsheet.crop(132,163,width,height);
-            player_left[1]=newsheet.crop(164,163,width,height);
-            player_left[2]=newsheet.crop(196,163,width,height);
-            player_left[3]=newsheet.crop(228,163,28,height);
+            player_left[0]=mariorun.crop(2,78,width,height);
+            player_left[1]=mariorun.crop(60,78,width,height);
+            player_left[2]=mariorun.crop(118,78,width,height);
+            player_left[3]=mariorun.crop(176,78,width,height);
+            player_left[4]=mariorun.crop(234,78,width,height);
+            player_left[5]=mariorun.crop(292,78,width,height);
+            player_left[6]=mariorun.crop(350,78,width,height);
+            player_left[7]=mariorun.crop(408,78,width,height);
 
-            player_right[0]=newsheet.crop(132,195,width,height);
-            player_right[1]=newsheet.crop(164,195,width,height);
-            player_right[2]=newsheet.crop(196,195,width,height);
-            player_right[3]=newsheet.crop(228,195,28,height);
+            player_right[0]=mariorun.crop(2,154,width,height);
+            player_right[1]=mariorun.crop(60,154,width,height);
+            player_right[2]=mariorun.crop(118,154,width,height);
+            player_right[3]=mariorun.crop(176,154,width,height);
+            player_right[4]=mariorun.crop(234,154,width,height);
+            player_right[5]=mariorun.crop(292,154,width,height);
+            player_right[6]=mariorun.crop(350,154,width,height);
+            player_right[7]=mariorun.crop(408,154,width,height);
 
-            player_back[0]=newsheet.crop(132,227,width,height);
-            player_back[1]=newsheet.crop(164,227,width,height);
-            player_back[2]=newsheet.crop(196,227,width,height);
-            player_back[3]=newsheet.crop(228,227,28,height);
+            player_back[0]=mariorun.crop(2,230,width,height);
+            player_back[1]=mariorun.crop(60,230,width,height);
+            player_back[2]=mariorun.crop(118,230,width,height);
+            player_back[3]=mariorun.crop(176,230,width,height);
+            player_back[4]=mariorun.crop(234,230,width,height);
+            player_back[5]=mariorun.crop(292,230,width,height);
+            player_back[6]=mariorun.crop(350,230,width,height);
+            player_back[7]=mariorun.crop(408,230,width,height);
+            
+            //Mario Idle "Animations"
+            marioidle_back[0]=mariorun.crop(2,306,width,height);
+            marioidle_right[0]=mariorun.crop(60,306,width,height);
+            marioidle_front[0]=mariorun.crop(118,306,width,height);
+            marioidle_left[0]=mariorun.crop(176,306,width,height);
+         
 
-            //Skely enemy anim
-            SkelyEnemy_front[0]=newsheet.crop(132,131+130,width,height);
-            SkelyEnemy_front[1]=newsheet.crop(164,131+130,width,height);
-            SkelyEnemy_front[2]=newsheet.crop(196,131+130,width,height);
-            SkelyEnemy_front[3]=newsheet.crop(228,131+130,28,height);
+            //Goomba Animations
+            goomba_front[0]=goombasheet.crop(2,2,44,48);
+            goomba_front[1]=goombasheet.crop(48,2,44,48);
+            goomba_front[2]=goombasheet.crop(94,2,44,48);
+            goomba_front[3]=goombasheet.crop(140,2,44,48);
+            goomba_front[4]=goombasheet.crop(186,2,44,48);
+            goomba_front[5]=goombasheet.crop(232,2,44,48);
+            goomba_front[6]=goombasheet.crop(278,2,44,48);
+            goomba_front[7]=goombasheet.crop(324,2,44,48);
 
-            SkelyEnemy_left[0]=newsheet.crop(132,163+130,width,height);
-            SkelyEnemy_left[1]=newsheet.crop(164,163+130,width,height);
-            SkelyEnemy_left[2]=newsheet.crop(196,163+130,width,height);
-            SkelyEnemy_left[3]=newsheet.crop(228,163+130,28,height);
+            goomba_left[0]=goombasheet.crop(2,52,44,48);
+            goomba_left[1]=goombasheet.crop(48,52,44,48);
+            goomba_left[2]=goombasheet.crop(94,52,44,48);
+            goomba_left[3]=goombasheet.crop(140,52,44,48);
+            goomba_left[4]=goombasheet.crop(186,52,44,48);
+            goomba_left[5]=goombasheet.crop(232,52,44,48);
+            goomba_left[6]=goombasheet.crop(278,52,44,48);
+            goomba_left[7]=goombasheet.crop(324,52,44,48);
 
-            SkelyEnemy_right[0]=newsheet.crop(132,195+130,width,height);
-            SkelyEnemy_right[1]=newsheet.crop(164,195+130,width,height);
-            SkelyEnemy_right[2]=newsheet.crop(196,195+130,width,height);
-            SkelyEnemy_right[3]=newsheet.crop(228,195+130,28,height);
+            goomba_right[0]=goombasheet.crop(2,102,44,48);
+            goomba_right[1]=goombasheet.crop(48,102,44,48);
+            goomba_right[2]=goombasheet.crop(94,102,44,48);
+            goomba_right[3]=goombasheet.crop(140,102,44,48);
+            goomba_right[4]=goombasheet.crop(186,102,44,48);
+            goomba_right[5]=goombasheet.crop(232,102,44,48);
+            goomba_right[6]=goombasheet.crop(278,102,44,48);
+            goomba_right[7]=goombasheet.crop(324,102,44,48);
 
-            SkelyEnemy_back[0]=newsheet.crop(132,227+130,width,height);
-            SkelyEnemy_back[1]=newsheet.crop(164,227+130,width,height);
-            SkelyEnemy_back[2]=newsheet.crop(196,227+130,width,height);
-            SkelyEnemy_back[3]=newsheet.crop(228,227+130,28,height);
+            goomba_back[0]=goombasheet.crop(2,152,44,48);
+            goomba_back[1]=goombasheet.crop(48,152,44,48);
+            goomba_back[2]=goombasheet.crop(94,152,44,48);
+            goomba_back[3]=goombasheet.crop(140,152,44,48);
+            goomba_back[4]=goombasheet.crop(186,152,44,48);
+            goomba_back[5]=goombasheet.crop(232,152,44,48);
+            goomba_back[6]=goombasheet.crop(278,152,44,48);
+            goomba_back[7]=goombasheet.crop(324,152,44,48);
 
         } catch (IOException e) {
             e.printStackTrace();

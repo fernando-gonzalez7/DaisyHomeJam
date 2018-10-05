@@ -38,6 +38,46 @@ public abstract class CreatureBase extends EntityBase {
         yMove=0;
     }
 
+    public BufferedImage getCurrentAnimationFrameIdle( Animation animDown, Animation animUp, Animation animLeft, Animation animRight, Animation idleDown, Animation idleUp, Animation idleLeft, Animation idleRight, BufferedImage[] front,BufferedImage[] back,BufferedImage[] left,BufferedImage[] right) {
+        if(xMove < 0){
+            ll=true;
+            ld=false;
+            lr=false; 
+            lu=false;
+            return idleLeft.getCurrentFrame();
+        }else if(xMove > 0){
+            ll=false;
+            ld=false;
+            lr=true;
+            lu=false;
+            return idleRight.getCurrentFrame();
+        }else if(yMove < 0){
+            ll=false;
+            ld=false;
+            lr=false;
+            lu=true;
+            return idleUp.getCurrentFrame();
+        }else if(yMove > 0){
+            ll=false;
+            ld=true;
+            lr=false;
+            lu=false;
+            return idleDown.getCurrentFrame();
+        }else{
+            if(ld){
+                return front[0];
+            }else if(lu){
+                return back[0];
+            }else if(ll){
+                return left[0];
+            }else if(lr){
+                return right[0];
+            }else{
+                return front[0];
+            }
+        }
+    }
+    
     public BufferedImage getCurrentAnimationFrame( Animation animDown, Animation animUp, Animation animLeft, Animation animRight, BufferedImage[] front,BufferedImage[] back,BufferedImage[] left,BufferedImage[] right) {
         if(xMove < 0){
             ll=true;
