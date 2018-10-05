@@ -26,6 +26,9 @@ public class Player extends CreatureBase {
 
     //Inventory
     private Inventory inventory;
+    
+    //Debug variable for adding items.
+    boolean NoItems = true;
 
     private SpellCastUI spellGUI;
 
@@ -264,20 +267,23 @@ public class Player extends CreatureBase {
         }
         
         //WIP: Debug give one of each item.
+        
+        
         if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_X))
         {
         	
-        	if (Item.fireRuneItem.getCount() != count || Item.rockItem.getCount() != count || Item.woodItem.getCount() != count)
+        	if (NoItems == true)
         	{
         		handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.fireRuneItem);
             	handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.rockItem);
             	handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.woodItem);
             	
-            	for (Item i : getInventory().getInventoryItems())
-            	{
-                    i.setCount(i.getCount() + 1);
-            		
-            	}
+            	NoItems = false;
+        	}
+        	for (Item i : getInventory().getInventoryItems())
+        	{
+                i.setCount(i.getCount() + 1);
+        		
         	}
         	
         	
