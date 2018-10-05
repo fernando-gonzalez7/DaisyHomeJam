@@ -19,7 +19,7 @@ import java.awt.image.BufferedImage;
 public class Player extends CreatureBase {
 
     //Animations
-    private Animation animDown, animUp, animLeft, animRight,animFireATT,animFireATTR,animFireATTU,animFireATTD;
+    private Animation animDown, animUp, animLeft, animRight,animFireATT,animFireATTR,animFireATTU,animFireATTD, idleDown, idleUp, idleLeft, idleRight;
 
     // Attack
 
@@ -42,7 +42,7 @@ public class Player extends CreatureBase {
     private Boolean LaunchedFireBallD=false;
     private Boolean attacking=false;
 
-    private int animWalkingSpeed = 150;
+    private int animWalkingSpeed = 50;
     private int animFireSpeed = 250;
     private int FireSpeed = 2;
     private int FireMove = 0;
@@ -53,7 +53,7 @@ public class Player extends CreatureBase {
 
 
     public Player(Handler handler, float x, float y) {
-        super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT);
+        super(handler, x, y, 74, 56);
 
         bounds.x=8*2;
         bounds.y=18*2;
@@ -67,10 +67,17 @@ public class Player extends CreatureBase {
         animLeft = new Animation(animWalkingSpeed,Images.player_left);
         animRight = new Animation(animWalkingSpeed,Images.player_right);
         animUp = new Animation(animWalkingSpeed,Images.player_back);
+        
         animFireATT = new Animation(animFireSpeed,Images.FireBallLeft);
         animFireATTR = new Animation(animFireSpeed,Images.FireBallRight);
         animFireATTU = new Animation(animFireSpeed,Images.FireBallUp);
         animFireATTD = new Animation(animFireSpeed,Images.FireBallDown);
+        
+        //Idle Animations
+        idleDown = new Animation(animWalkingSpeed,Images.marioidle_front);
+        idleLeft = new Animation(animWalkingSpeed,Images.marioidle_left);
+        idleRight = new Animation(animWalkingSpeed,Images.marioidle_right);
+        idleUp = new Animation(animWalkingSpeed,Images.marioidle_back);
 
         inventory= new Inventory(handler);
         spellGUI= new SpellCastUI(handler);
@@ -88,6 +95,10 @@ public class Player extends CreatureBase {
         animFireATTU.tick();
         animFireATTD.tick();
 
+        idleDown.tick();
+        idleUp.tick();
+        idleRight.tick();
+        idleLeft.tick();
 
 
         //Movement
@@ -133,7 +144,7 @@ public class Player extends CreatureBase {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight,Images.player_front,Images.player_back,Images.player_left,Images.player_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+        g.drawImage(getCurrentAnimationFrameIdle(idleDown,idleUp,idleLeft,idleRight, animDown, animUp, animLeft, animRight, Images.marioidle_front,Images.marioidle_back,Images.marioidle_left,Images.marioidle_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 
         if(FireBall){
             FireBallAttack(g);
@@ -266,7 +277,7 @@ public class Player extends CreatureBase {
         	}
         }
         
-        //WIP: Debug give one of each item.
+        //Add one of each item Debug
         
         
         if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_X))
