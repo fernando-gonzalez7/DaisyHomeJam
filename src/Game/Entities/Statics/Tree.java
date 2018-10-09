@@ -21,11 +21,12 @@ public class Tree extends StaticEntity {
     private Clip audioClip;
 
     public Tree(Handler handler, float x, float y) {
-        super(handler, x, y, Tile.TILEHEIGHT * 2, Tile.TILEWIDTH);
-        bounds.x=14;
-        bounds.y=85;
-        bounds.width = 36;
-        bounds.height = 48;
+    	//New Measurements
+        super(handler, x, y, 182, 144);
+        bounds.x=38;
+        bounds.y=73;
+        bounds.width = 70;
+        bounds.height = 103;
         health=16;
 
         try {
@@ -86,7 +87,7 @@ public class Tree extends StaticEntity {
                 beinghurt=false;
             }
 
-            g.drawImage(Images.numbers[getHealth()],(int)(x-handler.getGameCamera().getxOffset()+bounds.x),(int)(y-handler.getGameCamera().getyOffset()-getHeight()+(bounds.height+32)),42,42,null);
+            g.drawImage(Images.numbers[getHealth()],(int)(x-handler.getGameCamera().getxOffset()+bounds.x),(int)(y-handler.getGameCamera().getyOffset()-getHeight()+(bounds.height+32)),32,22,null);
             count++;
 
         }

@@ -60,7 +60,7 @@ public class Images {
     public Images() {
 
         SpriteSheet newsheet = new SpriteSheet(Images.loadImage("/Sheets/SpriteSheet.png"));
-        SpriteSheet numsheet = new SpriteSheet(Images.loadImage("/Sheets/numsheet.png"));
+        SpriteSheet numsheet = new SpriteSheet(Images.loadImage("/Sheets/NumberSheet.png"));
         SpriteSheet runesheet = new SpriteSheet(Images.loadImage("/Sheets/runes.png"));
         SpriteSheet FireBallsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBall.png"));
         SpriteSheet FireBallRightsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallRight.png"));
@@ -71,6 +71,7 @@ public class Images {
         SpriteSheet mariorun = new SpriteSheet(Images.loadImage("/Sheets/MarioSheet.png"));
         SpriteSheet goombasheet = new SpriteSheet(Images.loadImage("/Sheets/GoombaSheet.png"));
         SpriteSheet tileset = new SpriteSheet(Images.loadImage("/Sheets/TileSet.png"));
+        SpriteSheet tree = new SpriteSheet(Images.loadImage("/Sheets/Tree.png"));
         
         
 
@@ -120,7 +121,7 @@ public class Images {
             spellGUI = ImageIO.read(getClass().getResourceAsStream("/Sheets/SpellGUI.png"));
 
             inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));
-            title = ImageIO.read(getClass().getResourceAsStream("/Sheets/Title.png"));
+            title = ImageIO.read(getClass().getResourceAsStream("/Sheets/NewMenu.png"));
             door = ImageIO.read(getClass().getResourceAsStream("/Sheets/Door.png"));
             E = ImageIO.read(getClass().getResourceAsStream("/Buttons/E.png"));
             EP = ImageIO.read(getClass().getResourceAsStream("/Buttons/EP.png"));
@@ -189,26 +190,27 @@ public class Images {
 
             items[0]= newsheet.crop(114,448,30,24);//log
 
-            numbers[1]= numsheet.crop(17,15,17,22);
-            numbers[2]= numsheet.crop(64,16,14,19);
-            numbers[3]= numsheet.crop(110,16,14,19);
-            numbers[4]= numsheet.crop(154,17,15,19);
-            numbers[5]= numsheet.crop(19,61,13,20);
-            numbers[6]= numsheet.crop(64,61,14,20);
-            numbers[7]= numsheet.crop(110,62,14,19);
-            numbers[8]= numsheet.crop(156,61,13,20);
-            numbers[9]= numsheet.crop(19,107,13,20);
-            numbers[10]= numsheet.crop(60,107,24,20);
-            numbers[11]= numsheet.crop(107,107,20,19);
-            numbers[12]= numsheet.crop(151,107,23,19);
-            numbers[13]= numsheet.crop(14,152,23,20);
-            numbers[14]= numsheet.crop(60,152,23,20);
-            numbers[15]= numsheet.crop(105,153,24,20);
-            numbers[16]= numsheet.crop(151,153,23,20);
-            numbers[17]= numsheet.crop(14,198,24,20);
-            numbers[18]= numsheet.crop(60,198,23,20);
-            numbers[19]= numsheet.crop(106,198,23,21);
-            numbers[20]= numsheet.crop(149,198,28,20);
+            //Updated Number Sprites
+            numbers[1]= numsheet.crop(2,2,32,22);
+            numbers[2]= numsheet.crop(36,2,32,22);
+            numbers[3]= numsheet.crop(70,2,32,22);
+            numbers[4]= numsheet.crop(104,2,32,22);
+            numbers[5]= numsheet.crop(2,26,32,22);
+            numbers[6]= numsheet.crop(36,26,32,22);
+            numbers[7]= numsheet.crop(70,26,32,22);
+            numbers[8]= numsheet.crop(104,26,32,22);
+            numbers[9]= numsheet.crop(2,50,32,22);
+            numbers[10]= numsheet.crop(36,50,32,22);
+            numbers[11]= numsheet.crop(70,50,32,22);
+            numbers[12]= numsheet.crop(104,50,32,22);
+            numbers[13]= numsheet.crop(2,74,32,22);
+            numbers[14]= numsheet.crop(36,74,32,22);
+            numbers[15]= numsheet.crop(70,74,32,22);
+            numbers[16]= numsheet.crop(104,74,32,22);
+            numbers[17]= numsheet.crop(2,98,32,22);
+            numbers[18]= numsheet.crop(36,98,32,22);
+            numbers[19]= numsheet.crop(70,98,32,22);
+            numbers[20]= numsheet.crop(104,98,32,22);
 
 
             //block images,array index is equal to block id
@@ -224,7 +226,8 @@ public class Images {
             blocks[10] = newsheet.crop(0,130,Bwidth,Bheight);//topwall
             blocks[11] = newsheet.crop(67,130,Bwidth,Bheight);//lowerwall
             blocks[12] = newsheet.crop(0,260,Bwidth,Bheight);//mossyrock
-            blocks[13] = newsheet.crop(176,0,Bwidth,Bheight*2);//tree
+            //New Tree
+            blocks[13] = tree.crop(2,2,144,182);//tree
             blocks[14] = newsheet.crop(174,410,78,74);//rock
             blocks[15] = tileset.crop(66,1,Bwidth,Bheight);//Grass Flowers 1
 
