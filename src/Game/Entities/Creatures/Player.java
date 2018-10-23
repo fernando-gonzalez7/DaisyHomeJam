@@ -1,17 +1,20 @@
 package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
+import Game.Entities.Statics.Door;
 import Game.GameStates.State;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
 import Game.SpellCast.SpellCastUI;
 import Resources.Animation;
 import Resources.Images;
+import Worlds.BaseWorld;
+import Worlds.CaveWorld;
+import Worlds.World1;
 import Main.Handler;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-
 /**
  * Created by Elemental on 1/1/2017.
  */
@@ -270,6 +273,28 @@ public class Player extends CreatureBase {
         if(handler.getKeyManager().right&&! attacking)
             xMove = speed;
         
+        //TODO
+        //Skip World Debug
+        if (handler.getKeyManager().skipworld)
+        {
+        	Player player = handler.getWorld().getEntityManager().getPlayer();
+        	BaseWorld currentWorld = handler.getWorld();
+        	
+        	BaseWorld World1 = new World1(handler, "res/Maps/map1.map", player);
+        	BaseWorld CaveWorld = new BaseWorld(handler,"res/Maps/caveMap.map",player);
+        	
+        	if (currentWorld.equals(World1))
+        	{
+        		BaseWorld world = CaveWorld;
+            	handler.setWorld(world);
+        	}
+        	else if (currentWorld.equals(CaveWorld))
+        	{
+        		BaseWorld world = World1;
+            	handler.setWorld(world);
+        	}
+        }
+        
         //Regain Health Debug
         if (handler.getKeyManager().regenhealth) {
         	if (health < 75) {
@@ -278,8 +303,6 @@ public class Player extends CreatureBase {
         }
         
         //Add one of each item Debug
-        
-        
         if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_X))
         {
         	
