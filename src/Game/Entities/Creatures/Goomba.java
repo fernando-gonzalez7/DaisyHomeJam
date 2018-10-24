@@ -13,7 +13,7 @@ import java.util.Random;
 /**
  * Created by Elemental on 2/7/2017.
  */
-public class SkelyEnemy extends CreatureBase  {
+public class Goomba extends CreatureBase  {
 
 
     private Animation animDown, animUp, animLeft, animRight;
@@ -21,8 +21,8 @@ public class SkelyEnemy extends CreatureBase  {
     private Boolean attacking=false;
 
     private int animWalkingSpeed = 50;
-    private Inventory Skelyinventory;
-    private Rectangle SkelyCam;
+    private Inventory GoombaInventory;
+    private Rectangle GoombaCam;
 
     private int healthcounter = 0;
 
@@ -30,16 +30,16 @@ public class SkelyEnemy extends CreatureBase  {
     private int moveCount = 0;
     private int direction;
 
-    public SkelyEnemy(Handler handler, float x, float y) {
+    public Goomba(Handler handler, float x, float y) {
         super(handler, x, y, 48, 44);
         bounds.x=8*2;
         bounds.y=18*2;
         bounds.width=16*2;
         bounds.height=14*2;
         speed=1.5f;
-        health=10;
+        health=75;
 
-        SkelyCam= new Rectangle();
+        GoombaCam= new Rectangle();
 
 
 
@@ -53,7 +53,7 @@ public class SkelyEnemy extends CreatureBase  {
         
         
 
-        Skelyinventory= new Inventory(handler);
+        GoombaInventory= new Inventory(handler);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class SkelyEnemy extends CreatureBase  {
         }
 
 
-        Skelyinventory.tick();
+        GoombaInventory.tick();
 
 
     }
@@ -94,13 +94,13 @@ public class SkelyEnemy extends CreatureBase  {
         xMove = 0;
         yMove = 0;
 
-        SkelyCam.x = (int) (x - handler.getGameCamera().getxOffset() - (64 * 3));
-        SkelyCam.y = (int) (y - handler.getGameCamera().getyOffset() - (64 * 3));
-        SkelyCam.width = 64 * 7;
-        SkelyCam.height = 64 * 7;
+        GoombaCam.x = (int) (x - handler.getGameCamera().getxOffset() - (64 * 3));
+        GoombaCam.y = (int) (y - handler.getGameCamera().getyOffset() - (64 * 3));
+        GoombaCam.width = 64 * 7;
+        GoombaCam.height = 64 * 7;
 
-        if (SkelyCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset())
-                || SkelyCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset() + handler.getWorld().getEntityManager().getPlayer().getWidth(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset() + handler.getWorld().getEntityManager().getPlayer().getHeight())) {
+        if (GoombaCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset())
+                || GoombaCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset() + handler.getWorld().getEntityManager().getPlayer().getWidth(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset() + handler.getWorld().getEntityManager().getPlayer().getHeight())) {
 
             Rectangle cb = getCollisionBounds(0, 0);
             Rectangle ar = new Rectangle();
@@ -192,7 +192,7 @@ public class SkelyEnemy extends CreatureBase  {
     @Override
     //THIS IS AN ITEM EXAMPLE
     public void die() {
-    	handler.getWorld().getItemManager().addItem(Item.woodItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
+    	handler.getWorld().getItemManager().addItem(Item.world1key.createNew((int)x + bounds.x,(int)y + bounds.y,1));
 
     }
 }

@@ -200,6 +200,7 @@ public class Images {
             items[3]= inventorysheet.crop(104,2,iwidth,iheight);  //Coin
             items[4]= inventorysheet.crop(2,2,iwidth,iheight);    //Super Mushroom (+Attack)
             items[5]= inventorysheet.crop(36,2,iwidth,iheight);   //1-Up (+Health)
+            items[6]= inventorysheet.crop(308,70,iwidth,iheight); //World 1 Key (Meat)
             
 
             //Updated Number Sprites
@@ -243,9 +244,11 @@ public class Images {
             //Bricks replace moss rocks
             blocks[8] = peachtiles.crop(398,2,Bwidth,Bheight); //Regular Brick
             blocks[9] = peachtiles.crop(464,2,Bwidth,Bheight); //Empty Block
+            blocks[10] = peachtiles.crop(530,2,Bwidth,Bheight); //? Block
+            
             
             //Rocks 
-            blocks[10] = peachtiles.crop(2,68,Bwidth,72);
+            blocks[11] = peachtiles.crop(2,68,Bwidth,72);
             
 
 

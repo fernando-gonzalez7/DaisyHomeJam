@@ -14,7 +14,7 @@ import java.util.Random;
 /**
  * Created by Elemental on 1/2/2017.
  */
-public class Rock extends StaticEntity {
+public class QuestionBlock extends StaticEntity {
 
     private File audioFile;
     private AudioInputStream audioStream;
@@ -24,13 +24,13 @@ public class Rock extends StaticEntity {
     private Random randint;
     private int RNGR;
 
-    public Rock(Handler handler, float x, float y) {
-        super(handler, x, y, 72, 64);
+    public QuestionBlock(Handler handler, float x, float y) {
+        super(handler, x, y, 64, 64);
 
-        bounds.x=2;
-        bounds.y=14;
-        bounds.width = 60;
-        bounds.height = 56;
+        bounds.x=0;
+        bounds.y=0;
+        bounds.width = 64;
+        bounds.height = 64;
         health=16;
 
         try {
@@ -71,7 +71,7 @@ public class Rock extends StaticEntity {
     @Override
     public void render(Graphics g) {
         renderLife(g);
-        g.drawImage(Images.blocks[11],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
+        g.drawImage(Images.blocks[10],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 
     }
 
@@ -82,7 +82,7 @@ public class Rock extends StaticEntity {
         System.out.println(RNGR);
         handler.getWorld().getItemManager().addItem(Item.rockItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
         if(RNGR==1){
-            handler.getWorld().getItemManager().addItem(Item.fireflower.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(3) +1)));
+            handler.getWorld().getItemManager().addItem(Item.coin.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(3) +1)));
         }
 
     }

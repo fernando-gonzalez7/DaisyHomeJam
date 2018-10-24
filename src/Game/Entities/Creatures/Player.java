@@ -277,9 +277,11 @@ public class Player extends CreatureBase {
 			}
 		}
 
+		//Uses the 1-Up (+health) item
+		
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_H)) {
 			for (Item e : getInventory().getInventoryItems()) {
-				if (e.getName().equals("Super Mushroom")) {
+				if (e.getName().equals("1-Up")) {
 					if (health < 75 && health > 75-10) {
 						health = 75;
 						e.setCount(e.getCount() - 1);
@@ -291,8 +293,19 @@ public class Player extends CreatureBase {
 				}
 			}
 		}
-
-
+		
+		//Uses the Super Mushroom (+attack) item
+		
+		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_J)) {
+			for (Item m: getInventory().getInventoryItems()) {
+				if (m.getName().equals("Super Mushroom")) {
+					handler.getWorld().getEntityManager().getPlayer().attack += 5;
+					m.setCount(m.getCount() - 1);
+				}
+			}
+			
+		}
+		
 		//Add one of each item Debug
 
 
@@ -306,6 +319,7 @@ public class Player extends CreatureBase {
 				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.woodItem);
 				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.coin);
 				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.mushroom);
+				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.oneup);
 
 
 				NoItems = false;
