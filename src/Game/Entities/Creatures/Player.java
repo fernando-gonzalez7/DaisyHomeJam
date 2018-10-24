@@ -275,24 +275,24 @@ public class Player extends CreatureBase {
         
         //TODO
         //Skip World Debug
+        int currentWorld = 1;
+        int World1 = 1;
+        int Cave = 2;
+        
         if (handler.getKeyManager().skipworld)
         {
-        	Player player = handler.getWorld().getEntityManager().getPlayer();
-        	BaseWorld currentWorld = handler.getWorld();
-        	
-        	BaseWorld World1 = new World1(handler, "res/Maps/map1.map", player);
-        	BaseWorld CaveWorld = new BaseWorld(handler,"res/Maps/caveMap.map",player);
-        	
-        	if (currentWorld.equals(World1))
+        	if (currentWorld < Cave)
         	{
-        		BaseWorld world = CaveWorld;
-            	handler.setWorld(world);
+        		handler.setWorld(new CaveWorld(this.handler, "res/Maps/caveMap.map", this));
+            	currentWorld = Cave;
         	}
-        	else if (currentWorld.equals(CaveWorld))
+        	else if (currentWorld < 1 && currentWorld > 2)
         	{
-        		BaseWorld world = World1;
-            	handler.setWorld(world);
+        		handler.setWorld(new World1(this.handler, "res/Maps/map1.map", this));
+            	currentWorld = World1;
         	}
+        	
+        	
         }
         
         //Regain Health Debug
