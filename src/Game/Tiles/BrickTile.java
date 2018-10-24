@@ -5,8 +5,8 @@ import java.awt.image.BufferedImage;
 /**
  * Created by Elemental on 1/1/2017.
  */
-public class RockTile extends Tile {
-    public RockTile(BufferedImage texture,int id) {
+public class BrickTile extends Tile {
+    public BrickTile(BufferedImage texture,int id) {
         super(texture, id);
 
     }

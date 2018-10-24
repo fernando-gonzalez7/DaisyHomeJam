@@ -71,7 +71,7 @@ public class Rock extends StaticEntity {
     @Override
     public void render(Graphics g) {
         renderLife(g);
-        g.drawImage(Images.blocks[14],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
+        g.drawImage(Images.blocks[10],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 
     }
 

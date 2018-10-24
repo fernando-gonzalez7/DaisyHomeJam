@@ -70,8 +70,7 @@ public class Images {
         //Added sheets:
         SpriteSheet mariorun = new SpriteSheet(Images.loadImage("/Sheets/MarioSheet.png"));
         SpriteSheet goombasheet = new SpriteSheet(Images.loadImage("/Sheets/GoombaSheet.png"));
-        SpriteSheet tileset = new SpriteSheet(Images.loadImage("/Sheets/TileSet.png"));
-        SpriteSheet tree = new SpriteSheet(Images.loadImage("/Sheets/Tree.png"));
+        SpriteSheet peachtiles = new SpriteSheet(Images.loadImage("/Sheets/PeachTiles.png"));
         
         
 
@@ -100,7 +99,7 @@ public class Images {
 
         butstart = new BufferedImage[3];
         particleSmoke = new BufferedImage[3];
-        items = new BufferedImage[30];
+        items = new BufferedImage[256];
         numbers = new BufferedImage[21];
         Resume = new BufferedImage[2];
         BTitle = new BufferedImage[2];
@@ -122,7 +121,10 @@ public class Images {
 
             inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/NewMenu.png"));
-            door = ImageIO.read(getClass().getResourceAsStream("/Sheets/Door.png"));
+            
+            //New Door
+            door = peachtiles.crop(2,216,80,84);
+            
             E = ImageIO.read(getClass().getResourceAsStream("/Buttons/E.png"));
             EP = ImageIO.read(getClass().getResourceAsStream("/Buttons/EP.png"));
             Pause = ImageIO.read(getClass().getResourceAsStream("/Buttons/Pause.png"));
@@ -188,7 +190,9 @@ public class Images {
             particleSmoke[1]= newsheet.crop(129,399,20,35);
             particleSmoke[2]= newsheet.crop(154,400,20,35);
 
-            items[0]= newsheet.crop(114,448,30,24);//log
+            //Items
+            items[0]= newsheet.crop(114,448,30,24); //Wood
+            
 
             //Updated Number Sprites
             numbers[1]= numsheet.crop(2,2,32,22);
@@ -214,22 +218,27 @@ public class Images {
 
 
             //block images,array index is equal to block id
-            blocks[1] = tileset.crop(1,1,Bwidth,Bheight); //Regular Grass
-            blocks[2] = tileset.crop(66,1,Bwidth,Bheight);//dirt
-            blocks[3] = newsheet.crop(67,324,Bwidth,Bheight);//dirtrock
-            blocks[4] = newsheet.crop(0,0,Bwidth,Bheight);//uppperleft
-            blocks[5] = newsheet.crop(67,0,Bwidth,Bheight);//upperright
-            blocks[6] = newsheet.crop(67,65,Bwidth,Bheight);//lowerleft
-            blocks[7] = newsheet.crop(0,65,Bwidth,Bheight);//lowerright
-            blocks[8] = newsheet.crop(0,195,Bwidth,Bheight);//leftwall
-            blocks[9] = newsheet.crop(67,195,Bwidth,Bheight);//rightwall
-            blocks[10] = newsheet.crop(0,130,Bwidth,Bheight);//topwall
-            blocks[11] = newsheet.crop(67,130,Bwidth,Bheight);//lowerwall
-            blocks[12] = newsheet.crop(0,260,Bwidth,Bheight);//mossyrock
+            
+            //New Grass Tiles
+            blocks[1] = peachtiles.crop(2,2,Bwidth,Bheight); //Empty Grass
+            blocks[2] = peachtiles.crop(68,2,Bwidth,Bheight); //1 Grass
+            blocks[3] = peachtiles.crop(134,2,Bwidth,Bheight); //2 Grass
+            blocks[4] = peachtiles.crop(200,2,Bwidth,Bheight); //1 Flower
+            blocks[5] = peachtiles.crop(266,2,Bwidth,Bheight); //2 Flowers
+            
+            //Castle Tiles Brought down to just one
+            blocks[6] = peachtiles.crop(332,2,Bwidth,Bheight); //Peach Castle Wall
+            
             //New Tree
-            blocks[13] = tree.crop(2,2,144,182);//tree
-            blocks[14] = newsheet.crop(174,410,78,74);//rock
-            blocks[15] = tileset.crop(66,1,Bwidth,Bheight);//Grass Flowers 1
+            blocks[7] = peachtiles.crop(332,68,144,182); //Tree
+            
+            //Bricks replace moss rocks
+            blocks[8] = peachtiles.crop(398,2,Bwidth,Bheight); //Regular Brick
+            blocks[9] = peachtiles.crop(464,2,Bwidth,Bheight); //Empty Block
+            
+            //Rocks 
+            blocks[10] = peachtiles.crop(2,68,Bwidth,72);
+            
 
 
             //Mario Animations

@@ -1,15 +1,13 @@
 package Game.Tiles;
 
-import Resources.Images;
+import java.awt.image.BufferedImage;
 
 /**
- * Created by Elemental on 1/1/2017.
+ * Created by Elemental on 1/2/2017.
  */
-public class GrassTile extends Tile{
+public class GrassTile extends Tile {
 
-
-    public GrassTile(int id) {
-        super(Images.blocks[1], id);
-
+    public GrassTile(BufferedImage texture, int id) {
+            super(texture, id);
     }
 }

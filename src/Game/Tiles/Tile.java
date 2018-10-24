@@ -14,25 +14,28 @@ public class Tile {
     //statics
 
     public static Tile[] tiles = new Tile[256];
-    public static Tile grassTile = new GrassTile(1);
-    public static Tile graarockTile = new RockTile(Images.blocks[3],3);
-    public static Tile dirtrockTile = new RockTile(Images.blocks[12],12);
-    public static Tile dirtTile = new DirtTile(2);
-    public static Tile upperleftTile = new BorderTile(Images.blocks[4],4);
-    public static Tile upperrightTile = new BorderTile(Images.blocks[5],5);
-    public static Tile lowerleftTile = new BorderTile(Images.blocks[6],6);
-    public static Tile lowerrightTile = new BorderTile(Images.blocks[7],7);
-    public static Tile leftwallTile = new BorderTile(Images.blocks[8],8);
-    public static Tile rightwallTile = new BorderTile(Images.blocks[9],9);
-    public static Tile topwallTile = new BorderTile(Images.blocks[10],10);
-    public static Tile lowerwallTile = new BorderTile(Images.blocks[11],11);
+    
+    //New Grass Tiles
+    public static Tile emptygrassTile = new GrassTile(Images.blocks[1], 1);
+    public static Tile onegrassTile = new GrassTile(Images.blocks[2], 2);
+    public static Tile twograssTile = new GrassTile(Images.blocks[3], 3);
+    public static Tile oneflowerTile = new GrassTile(Images.blocks[4], 4);
+    public static Tile twoflowerTile = new GrassTile(Images.blocks[5], 5);
+    
+    //Border Tiles brought down to just one
+    public static Tile peachcastletile = new BorderTile(6);
 
+     //Bricks
+    public static Tile bricktile = new BrickTile(Images.blocks[8],8);
+    public static Tile emptybricktile = new BrickTile(Images.blocks[9],9);
+    
+  
     //CLASS
 
 
     protected BufferedImage texture;
     protected final int id;
-    public static final int TILEWIDTH =64 ,TILEHEIGHT = 64;
+    public static final int TILEWIDTH = 64 ,TILEHEIGHT = 64;
 
 
     public Tile(BufferedImage texture, int id){
