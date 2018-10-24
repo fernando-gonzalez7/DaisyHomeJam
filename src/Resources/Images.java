@@ -12,6 +12,8 @@ public class Images {
 	//Change default w/h to fit Mario
     private static final int width = 56, height = 74;
     
+    private static final int iwidth = 32, iheight = 32;
+    
     private static final int Bwidth = 64, Bheight = 64;
     private static final int Rwidth = 56, Rheight = 93;
     private static final int Fwidth = 512, Fheight = 197;
@@ -71,6 +73,7 @@ public class Images {
         SpriteSheet mariorun = new SpriteSheet(Images.loadImage("/Sheets/MarioSheet.png"));
         SpriteSheet goombasheet = new SpriteSheet(Images.loadImage("/Sheets/GoombaSheet.png"));
         SpriteSheet peachtiles = new SpriteSheet(Images.loadImage("/Sheets/PeachTiles.png"));
+        SpriteSheet inventorysheet = new SpriteSheet(Images.loadImage("/Sheets/InventoryItems.png"));
         
         
 
@@ -191,7 +194,12 @@ public class Images {
             particleSmoke[2]= newsheet.crop(154,400,20,35);
 
             //Items
-            items[0]= newsheet.crop(114,448,30,24); //Wood
+            items[0]= inventorysheet.crop(274,70,iwidth,iheight); //Wood
+            items[1]= inventorysheet.crop(2,36,iwidth,iheight);   //Rock
+            items[2]= inventorysheet.crop(172,36,iwidth,iheight); //Fire Flower (Rune)
+            items[3]= inventorysheet.crop(104,2,iwidth,iheight);  //Coin
+            items[4]= inventorysheet.crop(2,2,iwidth,iheight);    //Super Mushroom (+Attack)
+            items[5]= inventorysheet.crop(36,2,iwidth,iheight);   //1-Up (+Health)
             
 
             //Updated Number Sprites

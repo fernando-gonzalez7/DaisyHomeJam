@@ -23,10 +23,10 @@ public class Tree extends StaticEntity {
     public Tree(Handler handler, float x, float y) {
     	//New Measurements
         super(handler, x, y, 182, 144);
-        bounds.x=38;
-        bounds.y=73;
-        bounds.width = 70;
-        bounds.height = 103;
+        bounds.x=40;
+        bounds.y=92;
+        bounds.width = 59;
+        bounds.height = 85;
         health=16;
 
         try {

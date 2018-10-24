@@ -25,12 +25,12 @@ public class Rock extends StaticEntity {
     private int RNGR;
 
     public Rock(Handler handler, float x, float y) {
-        super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
+        super(handler, x, y, 72, 64);
 
-        bounds.x=0;
-        bounds.y=0;
-        bounds.width = 64;
-        bounds.height = 64;
+        bounds.x=2;
+        bounds.y=14;
+        bounds.width = 60;
+        bounds.height = 56;
         health=16;
 
         try {
@@ -82,7 +82,7 @@ public class Rock extends StaticEntity {
         System.out.println(RNGR);
         handler.getWorld().getItemManager().addItem(Item.rockItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
         if(RNGR==1){
-            handler.getWorld().getItemManager().addItem(Item.fireRuneItem.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(3) +1)));
+            handler.getWorld().getItemManager().addItem(Item.fireflower.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(3) +1)));
         }
 
     }

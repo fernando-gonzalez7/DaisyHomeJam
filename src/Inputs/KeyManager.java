@@ -15,6 +15,9 @@ public class KeyManager implements KeyListener {
 	public boolean skipworld = false;
 	public boolean regenhealth = false;
 	public boolean addinventory = false;
+	
+	//Add Health Button
+	public boolean mushroomkey = false;
 
 
 	public KeyManager(){
@@ -52,6 +55,9 @@ public class KeyManager implements KeyListener {
 		skipworld = keys[KeyEvent.VK_TAB];
 		regenhealth = keys[KeyEvent.VK_SHIFT];
 		addinventory = keys[KeyEvent.VK_X];
+		
+		//Add health button
+		mushroomkey = keys[KeyEvent.VK_H];
 	}
 
 	@Override
