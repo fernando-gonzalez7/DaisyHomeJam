@@ -17,6 +17,8 @@ public class World1 extends BaseWorld{
 		super(handler,path,player);
 		this.handler = handler;
 		caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player);
+		
+		entityManager.addEntity(new PeachNPC(handler, 300, 0));
 
 		entityManager.addEntity(new LongBush(handler, 120, 200));
 		entityManager.addEntity(new LongBush(handler, 330, 200));
