@@ -1,12 +1,16 @@
 package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
+import Game.Entities.Statics.Door;
 import Game.GameStates.State;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
 import Game.SpellCast.SpellCastUI;
 import Resources.Animation;
 import Resources.Images;
+import Worlds.BaseWorld;
+import Worlds.CaveWorld;
+import Worlds.World1;
 import Main.Handler;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -269,6 +273,26 @@ public class Player extends CreatureBase {
 			xMove = -speed;
 		if(handler.getKeyManager().right&&! attacking)
 			xMove = speed;
+
+        //TODO
+        //Skip World Debug
+        int currentWorld = 1;
+        int World1 = 1;
+        int Cave = 2;
+        
+        if (handler.getKeyManager().skipworld)
+        {
+        	if (currentWorld < Cave)
+        	{
+        		handler.setWorld(new CaveWorld(this.handler, "res/Maps/caveMap.map", this));
+            	currentWorld = Cave;
+        	}
+        	else if (currentWorld < 1 && currentWorld > 2)
+        	{
+        		handler.setWorld(new World1(this.handler, "res/Maps/map1.map", this));
+            	currentWorld = World1;
+        	}
+        }
 
 		//Regain Health Debug
 		if (handler.getKeyManager().regenhealth) {
