@@ -65,6 +65,7 @@ public class Player extends CreatureBase {
 		bounds.height=39;
 		health=75;
 		attack=2;
+		this.speed = this.speed*(float)1.5;
 
 
 		animDown = new Animation(animWalkingSpeed,Images.player_front);
@@ -344,6 +345,7 @@ public class Player extends CreatureBase {
 				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.coin);
 				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.mushroom);
 				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.oneup);
+				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.world1key);
 
 
 				NoItems = false;
