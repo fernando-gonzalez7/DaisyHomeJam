@@ -57,8 +57,10 @@ public class Images {
     public static BufferedImage[] FireBallDown;
     public static BufferedImage loading;
     public static BufferedImage spellGUI;
+    
+    public static BufferedImage[] fountain;
 
-
+    
     public Images() {
 
         SpriteSheet newsheet = new SpriteSheet(Images.loadImage("/Sheets/SpriteSheet.png"));
@@ -74,6 +76,9 @@ public class Images {
         SpriteSheet goombasheet = new SpriteSheet(Images.loadImage("/Sheets/GoombaSheet.png"));
         SpriteSheet peachtiles = new SpriteSheet(Images.loadImage("/Sheets/PeachTiles.png"));
         SpriteSheet inventorysheet = new SpriteSheet(Images.loadImage("/Sheets/InventoryItems.png"));
+        SpriteSheet fountainsheet = new SpriteSheet(Images.loadImage("/Sheets/FountainSheet.png"));
+        SpriteSheet statuesheet = new SpriteSheet(Images.loadImage("/Sheets/StatueSheet.png"));
+
         
         
 
@@ -108,6 +113,9 @@ public class Images {
         BTitle = new BufferedImage[2];
         Options = new BufferedImage[2];
         Runes = new BufferedImage[36];
+        
+        //Fountain
+        fountain = new BufferedImage[3];
 
         FireBallLeft = new BufferedImage[6];
         FireBallRight = new BufferedImage[6];
@@ -250,8 +258,23 @@ public class Images {
             //Rocks 
             blocks[11] = peachtiles.crop(2,68,Bwidth,72);
             
-
-
+            //Lamp post
+            blocks[12] = fountainsheet.crop(656,2,52,166);
+            
+            //Peach Statue
+            blocks[13] = statuesheet.crop(2,2,104,236);
+            
+            //Bushes
+            blocks[14] = peachtiles.crop(478,68,60,224); //Long Bush
+            blocks[15] = peachtiles.crop(540,68,60,128); //Short Bush
+            
+            
+            //Fountain
+            fountain[0] = fountainsheet.crop(2,2,216,226);
+            fountain[1] = fountainsheet.crop(220,2,216,226);
+            fountain[2] = fountainsheet.crop(438,2,216,226);
+            
+         
             //Mario Animations
             player_front[0]=mariorun.crop(2,2,width,height);
             player_front[1]=mariorun.crop(60,2,width,height);

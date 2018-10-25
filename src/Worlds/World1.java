@@ -30,7 +30,7 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Goomba(handler, 1250, 500));
         
         //Question Blocks
-        entityManager.addEntity(new QuestionBlock(handler, 392, 485));
+        entityManager.addEntity(new ShortBush(handler, 392, 485));
         
        
 
