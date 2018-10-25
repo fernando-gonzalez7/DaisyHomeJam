@@ -292,6 +292,7 @@ public class Player extends CreatureBase {
         		handler.setWorld(new World1(this.handler, "res/Maps/map1.map", this));
             	currentWorld = World1;
         	}
+        }
 
 		//Regain Health Debug
 		if (handler.getKeyManager().regenhealth) {
