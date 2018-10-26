@@ -11,6 +11,7 @@ import Resources.Images;
 import Worlds.BaseWorld;
 import Worlds.CaveWorld;
 import Worlds.World1;
+import Worlds.World3;
 import Main.Handler;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -263,6 +264,9 @@ public class Player extends CreatureBase {
 		State.setState(handler.getGame().menuState);
 	}
 
+	//World Debug variable
+    int currentWorld = 1;
+	
 	private void getInput(){
 		xMove = 0;
 		yMove = 0;
@@ -278,21 +282,27 @@ public class Player extends CreatureBase {
 
         //TODO
         //Skip World Debug
-        int currentWorld = 1;
         int World1 = 1;
         int Cave = 2;
-        
-        if (handler.getKeyManager().skipworld)
+        int World3 = 3;
+
+        if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_TAB))
         {
-        	if (currentWorld < Cave)
+        	if (currentWorld == World1)
         	{
+        		currentWorld = Cave;
         		handler.setWorld(new CaveWorld(this.handler, "res/Maps/caveMap.map", this));
-            	currentWorld = Cave;
         	}
-        	else if (currentWorld < 1 && currentWorld > 2)
+        	else if (currentWorld == Cave)
         	{
+        		currentWorld = World3;
+        		handler.setWorld(new World3(this.handler, "res/Maps/map3.map", this));
+        	}
+        	else if (currentWorld == World3)
+        	{
+        		//Last World added
+        		currentWorld = World1; //Loop back
         		handler.setWorld(new World1(this.handler, "res/Maps/map1.map", this));
-            	currentWorld = World1;
         	}
         }
 
