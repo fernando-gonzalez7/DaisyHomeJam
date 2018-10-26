@@ -27,7 +27,7 @@ public class Tree extends StaticEntity {
         bounds.y=92;
         bounds.width = 59;
         bounds.height = 85;
-        health=10;
+        health=5;
 
         try {
             audioFile = new File("res/music/Chopping.wav");
@@ -66,7 +66,7 @@ public class Tree extends StaticEntity {
 
     @Override
     public void render(Graphics g) {
-        renderLife(g);
+        //renderLife(g);
         g.drawImage(Images.blocks[7],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 
     }

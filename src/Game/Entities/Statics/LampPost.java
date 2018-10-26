@@ -15,7 +15,7 @@ public class LampPost extends StaticEntity {
         bounds.y=128;
         bounds.width = 20;
         bounds.height = 32;
-        health=16;
+        health=999999999;
     }   
     
     @Override

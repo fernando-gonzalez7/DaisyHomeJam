@@ -15,7 +15,7 @@ public class LongBush extends StaticEntity {
         bounds.y=37;
         bounds.width = 59;
         bounds.height = 189;
-        health=16;
+        health=99999999;
     }   
     
     @Override

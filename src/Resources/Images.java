@@ -33,6 +33,12 @@ public class Images {
 	public static BufferedImage[] marioidle_front;
 	public static BufferedImage[] marioidle_back;
 
+	//Luigi
+	public static BufferedImage[] luigi_right;
+	public static BufferedImage[] luigi_left;
+	public static BufferedImage[] luigi_front;
+	public static BufferedImage[] luigi_back;
+
 	//Goomba
 	public static BufferedImage[] goomba_right;
 	public static BufferedImage[] goomba_left;
@@ -109,6 +115,7 @@ public class Images {
 		SpriteSheet drybonesstatue = new SpriteSheet(Images.loadImage("/Sheets/DryBonesStatue.png"));
 		SpriteSheet chainchompsheet = new SpriteSheet(Images.loadImage("/Sheets/ChainChompSheet.png"));
 		SpriteSheet drybonessheet = new SpriteSheet(Images.loadImage("/Sheets/DryBonesSheet.png"));
+		SpriteSheet luigisheet = new SpriteSheet(Images.loadImage("/Sheets/LuigiSheet.png"));
 
 
 		blocks = new BufferedImage[256];
@@ -137,6 +144,12 @@ public class Images {
 		koopa_right = new BufferedImage[8];
 		koopa_front = new BufferedImage[8];
 		koopa_back = new BufferedImage[8];
+
+		//Luigi
+		luigi_left = new BufferedImage[8];
+		luigi_right = new BufferedImage[8];
+		luigi_front = new BufferedImage[8];
+		luigi_back = new BufferedImage[8];
 
 		//Dry Bones
 		drybones_left = new BufferedImage[8];
@@ -259,7 +272,8 @@ public class Images {
 			items[3]= inventorysheet.crop(104,2,iwidth,iheight);  //Coin
 			items[4]= inventorysheet.crop(2,2,iwidth,iheight);    //Super Mushroom (+Attack)
 			items[5]= inventorysheet.crop(36,2,iwidth,iheight);   //1-Up (+Health)
-			items[6]= inventorysheet.crop(274,36,iwidth,iheight); //World 1 Key (Meat)
+			items[6]= inventorysheet.crop(274,36,iwidth,iheight); //World 1 Key
+			items[7]= inventorysheet.crop(70,36,iwidth,iheight);  //Luigi Summon Item
 
 
 			//Updated Number Sprites
@@ -492,7 +506,7 @@ public class Images {
 			drybones_front[5]=drybonessheet.crop(242,2,46,74);
 			drybones_front[6]=drybonessheet.crop(290,2,46,74);
 			drybones_front[7]=drybonessheet.crop(338,2,46,74);
-			
+
 			drybones_left[0]=drybonessheet.crop(2,78,46,74);
 			drybones_left[1]=drybonessheet.crop(50,78,46,74);
 			drybones_left[2]=drybonessheet.crop(98,78,46,74);
@@ -501,7 +515,7 @@ public class Images {
 			drybones_left[5]=drybonessheet.crop(242,78,46,74);
 			drybones_left[6]=drybonessheet.crop(290,78,46,74);
 			drybones_left[7]=drybonessheet.crop(338,78,46,74);
-			
+
 			drybones_right[0]=drybonessheet.crop(2,154,46,74);
 			drybones_right[1]=drybonessheet.crop(50,154,46,74);
 			drybones_right[2]=drybonessheet.crop(98,154,46,74);
@@ -510,7 +524,7 @@ public class Images {
 			drybones_right[5]=drybonessheet.crop(242,154,46,74);
 			drybones_right[6]=drybonessheet.crop(290,154,46,74);
 			drybones_right[7]=drybonessheet.crop(338,154,46,74);
-			
+
 			drybones_back[0]=drybonessheet.crop(2,230,46,74);
 			drybones_back[1]=drybonessheet.crop(50,230,46,74);
 			drybones_back[2]=drybonessheet.crop(98,230,46,74);
@@ -519,8 +533,8 @@ public class Images {
 			drybones_back[5]=drybonessheet.crop(242,230,46,74);
 			drybones_back[6]=drybonessheet.crop(290,230,46,74);
 			drybones_back[7]=drybonessheet.crop(338,230,46,74);
-			
-			
+
+
 			//NPCS			
 
 			//Peach
@@ -528,6 +542,43 @@ public class Images {
 			princesspeach[1]=npcsheet.crop(52,2,48,94);  //Left
 			princesspeach[2]=npcsheet.crop(102,2,48,94); //Back
 			princesspeach[3]=npcsheet.crop(152,2,48,94); //Right
+			
+			//Luigi
+			luigi_front[0]=luigisheet.crop(2,2,44,86);
+			luigi_front[1]=luigisheet.crop(48,2,44,86);
+			luigi_front[2]=luigisheet.crop(94,2,44,86);
+			luigi_front[3]=luigisheet.crop(140,2,44,86);
+			luigi_front[4]=luigisheet.crop(186,2,44,86);
+			luigi_front[5]=luigisheet.crop(232,2,44,86);
+			luigi_front[6]=luigisheet.crop(278,2,44,86);
+			luigi_front[7]=luigisheet.crop(324,2,44,86);
+			
+			luigi_left[0]=luigisheet.crop(2,90,44,86);
+			luigi_left[1]=luigisheet.crop(48,90,44,86);
+			luigi_left[2]=luigisheet.crop(94,90,44,86);
+			luigi_left[3]=luigisheet.crop(140,90,44,86);
+			luigi_left[4]=luigisheet.crop(186,90,44,86);
+			luigi_left[5]=luigisheet.crop(232,90,44,86);
+			luigi_left[6]=luigisheet.crop(278,90,44,86);
+			luigi_left[7]=luigisheet.crop(324,90,44,86);
+
+			luigi_right[0]=luigisheet.crop(2,178,44,86);
+			luigi_right[1]=luigisheet.crop(48,178,44,86);
+			luigi_right[2]=luigisheet.crop(94,178,44,86);
+			luigi_right[3]=luigisheet.crop(140,178,44,86);
+			luigi_right[4]=luigisheet.crop(186,178,44,86);
+			luigi_right[5]=luigisheet.crop(232,178,44,86);
+			luigi_right[6]=luigisheet.crop(278,178,44,86);
+			luigi_right[7]=luigisheet.crop(324,178,44,86);
+			
+			luigi_back[0]=luigisheet.crop(2,266,44,86);
+			luigi_back[1]=luigisheet.crop(48,266,44,86);
+			luigi_back[2]=luigisheet.crop(94,266,44,86);
+			luigi_back[3]=luigisheet.crop(140,266,44,86);
+			luigi_back[4]=luigisheet.crop(186,266,44,86);
+			luigi_back[5]=luigisheet.crop(232,266,44,86);
+			luigi_back[6]=luigisheet.crop(278,266,44,86);
+			luigi_back[7]=luigisheet.crop(324,266,44,86);
 
 
 		} catch (IOException e) {

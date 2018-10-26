@@ -17,6 +17,7 @@ public class Door extends StaticEntity {
 
     private Rectangle ir = new Rectangle();
     public Boolean EP = false;
+    public Boolean QC = false;
 
     private BaseWorld world;
 
@@ -43,7 +44,9 @@ public class Door extends StaticEntity {
         if(isBeinghurt()){
             setHealth(10000000);
         }
-
+        if (PeachNPC.questComplete1) {
+            QC = true;
+        }
         if(handler.getKeyManager().attbut){
             EP=true;
 
@@ -55,13 +58,15 @@ public class Door extends StaticEntity {
 
     @Override
     public void render(Graphics g) {
+    	if (PeachNPC.questComplete1) {
         g.drawImage(Images.door,(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 
         g.setColor(Color.black);
         checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
     }
-
+    }
     private void checkForPlayer(Graphics g, Player p) {
+    	if (PeachNPC.questComplete1) {
         Rectangle pr = p.getCollisionBounds(0,0);
 
         if(ir.contains(pr) && !EP){
@@ -73,7 +78,7 @@ public class Door extends StaticEntity {
 
         }
 
-
+    	}
     }
 
     @Override

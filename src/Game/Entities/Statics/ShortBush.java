@@ -15,7 +15,7 @@ public class ShortBush extends StaticEntity {
         bounds.y=19;
         bounds.width = 60;
         bounds.height = 109;
-        health=16;
+        health=99999;
     }   
     
     @Override

@@ -15,7 +15,7 @@ public class PeachStatue extends StaticEntity {
         bounds.y=139;
         bounds.width = 95;
         bounds.height = 92;
-        health=16;
+        health=999999;
     }   
     
     @Override

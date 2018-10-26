@@ -12,18 +12,21 @@ public class World1 extends BaseWorld{
 	private Handler handler;
 	private BaseWorld caveWorld;
 	
+	public static boolean isdoor = false;
+	
 
 	public World1(Handler handler, String path, Player player){
 		super(handler,path,player);
 		this.handler = handler;
 		caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player);
 		
+		
 		entityManager.addEntity(new PeachNPC(handler, 300, 0, caveWorld));
-
+		entityManager.addEntity(new Door(handler, 100, 0, caveWorld));
 		entityManager.addEntity(new LongBush(handler, 120, 200));
 		entityManager.addEntity(new LongBush(handler, 330, 200));
 		entityManager.addEntity(new Tree(handler, 80, 450));
-		entityManager.addEntity(new Goomba(handler, 340, 600));
+		entityManager.addEntity(new LuigiCompanion(handler, 340, 600));
 		entityManager.addEntity(new Tree(handler, 300, 650));
 		entityManager.addEntity(new Tree(handler, 80, 900));
 		entityManager.addEntity(new LongBush(handler, 120, 1200));
@@ -66,9 +69,21 @@ public class World1 extends BaseWorld{
 		entityManager.addEntity(new LongBush(handler, 1450, 1025));
 		entityManager.addEntity(new Koopa(handler, 1300, 1450));
 		
+		
+		
 
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
+	}
+
+
+	public static boolean isIsdoor() {
+		return isdoor;
+	}
+
+
+	public static void setIsdoor(boolean isdoor) {
+		World1.isdoor = isdoor;
 	}
 	
 }

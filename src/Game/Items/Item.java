@@ -34,6 +34,7 @@ public class Item {
     public static Item mushroom = new Item(Images.items[4],"Super Mushroom",4);
     public static Item oneup = new Item(Images.items[5],"1-Up",5);
     public static Item world1key = new Item(Images.items[6],"World-1 Key",6);
+    public static Item luigicap = new Item(Images.items[7],"Luigi Cap",7);
     
     
    // public static Item iceRuneItem = new Item(Images.Runes[3],"Fire Rune",3);

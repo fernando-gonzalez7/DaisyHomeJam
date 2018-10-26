@@ -20,7 +20,7 @@ public class Fountain extends StaticEntity {
         bounds.y=64;
         bounds.width = 213;
         bounds.height = 163;
-        health=16;
+        health=999999999;
         
         //Animation
         watersplash = new Animation(wateranispeed, Images.fountain);

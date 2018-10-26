@@ -1,5 +1,6 @@
 package Game.Entities.Statics;
 
+import Game.Entities.Creatures.Koopa;
 import Game.Entities.Creatures.Player;
 import Game.GameStates.State;
 import Game.Items.Item;
@@ -7,18 +8,17 @@ import Main.Handler;
 import Resources.Images;
 import Worlds.BaseWorld;
 import Worlds.CaveWorld;
+import Worlds.World1;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-
-
 
 public class PeachNPC extends StaticEntity {
 
 	//Phase 4
 	public static boolean questComplete1 = false;
-	public static boolean coins3Delivered;
-	public static boolean key1Delivered;
+	public static boolean coins3Delivered = false;
+	public static boolean key1Delivered = false;
 	
     private Rectangle ir = new Rectangle();
     public Boolean EP = false;
@@ -50,6 +50,7 @@ public class PeachNPC extends StaticEntity {
         }
 
         if(handler.getKeyManager().attbut){
+        	//handler.getWorld().getEntityManager().addEntity(new Koopa(handler, 100, 100));
             EP=true;
 
         }else if(!handler.getKeyManager().attbut){
@@ -66,11 +67,10 @@ public class PeachNPC extends StaticEntity {
         checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
     }
 
-
     private void checkForPlayer(Graphics g, Player p)
     {
 
-        Rectangle pr = p.getCollisionBounds(0,44);
+        Rectangle pr = p.getCollisionBounds(0,0);
 
         //Interaction with player code
         
@@ -113,7 +113,10 @@ public class PeachNPC extends StaticEntity {
 				//Image needs to be replaced
 				g.drawImage(Images.EP,(int) x+width,(int) y+10,32,32,null);
 				System.out.println("Quest completed successful");
-				//Add DOOR code HERE
+				questComplete1 = true;
+				//handler.getWorld().getEntityManager().addEntity(new Koopa(handler, 100, 100));
+				//World1.setIsdoor(true);
+				
 			}
 			else if(!coins3Delivered || !key1Delivered)
 			{

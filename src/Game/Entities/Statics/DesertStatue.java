@@ -20,7 +20,7 @@ public class DesertStatue extends StaticEntity {
         bounds.y=202;
         bounds.width = 66;
         bounds.height = 62;
-        health=170;
+        health=999999999;
         
         //Animation
         statueeye = new Animation(statueeyeanispeed, Images.drystatue);

@@ -300,6 +300,7 @@ public class Player extends CreatureBase {
 		if (handler.getKeyManager().regenhealth) {
 			if (health < 75) {
 				health++;
+				
 			}
 		}
 
@@ -347,6 +348,7 @@ public class Player extends CreatureBase {
 				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.mushroom);
 				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.oneup);
 				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.world1key);
+				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.luigicap);
 
 
 				NoItems = false;
