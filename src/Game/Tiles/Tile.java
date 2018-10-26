@@ -15,7 +15,8 @@ public class Tile {
 
     public static Tile[] tiles = new Tile[256];
     
-    //New Grass Tiles
+    //World 1
+    //New Grass Tiles (Peach's Garden)
     public static Tile emptygrassTile = new GrassTile(Images.blocks[1], 1);
     public static Tile onegrassTile = new GrassTile(Images.blocks[2], 2);
     public static Tile twograssTile = new GrassTile(Images.blocks[3], 3);
@@ -29,6 +30,10 @@ public class Tile {
     public static Tile bricktile = new BrickTile(Images.blocks[8],8);
     public static Tile emptybricktile = new BrickTile(Images.blocks[9],9);
     
+    //World 2 (Desert)
+    public static Tile sand = new GrassTile(Images.blocks[16], 10);
+    public static Tile desertwall = new BrickTile(Images.blocks[17],11);
+    public static Tile emptybricknograss = new BrickTile(Images.blocks[18],12);
   
     //CLASS
 

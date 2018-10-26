@@ -2,6 +2,7 @@ package Worlds;
 
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.Goomba;
+import Game.Entities.Creatures.Koopa;
 import Game.Entities.Statics.*;
 import Main.Handler;
 
@@ -64,6 +65,8 @@ public class World1 extends BaseWorld{
 		entityManager.addEntity(new LampPost(handler, 1460, 780));
 		entityManager.addEntity(new LongBush(handler, 1180, 1025));
 		entityManager.addEntity(new LongBush(handler, 1450, 1025));
+		entityManager.addEntity(new Koopa(handler, 1300, 1450));
+		
 
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
