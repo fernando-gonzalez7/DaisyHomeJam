@@ -10,15 +10,14 @@ import Worlds.BaseWorld;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-/**
- * Created by Elemental on 2/2/2017.
- */
 
 
 public class PeachNPC extends StaticEntity {
 
 	//Phase 4
-	public static Boolean questComplete = false;
+	public static Boolean questComplete1 = false;
+	boolean coins3Delivered;
+	boolean key1Delivered;
 	
     private Rectangle ir = new Rectangle();
     public Boolean EP = false;
@@ -66,9 +65,11 @@ public class PeachNPC extends StaticEntity {
         checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
     }
 
+
     private void checkForPlayer(Graphics g, Player p)
     {
-        Rectangle pr = p.getCollisionBounds(0,0);
+
+        Rectangle pr = p.getCollisionBounds(0,44);
 
         //TODO
         //Interaction with player code
@@ -77,20 +78,40 @@ public class PeachNPC extends StaticEntity {
         if(ir.contains(pr) && !EP)
         {
             g.drawImage(Images.E,(int) x+width,(int) y+10,32,32,null);
+            System.out.println("Contact successful");
         }
         //If E is pressed then 
         else if(ir.contains(pr) && EP)
         {
-        	questComplete = true;
-            g.drawImage(Images.EP,(int) x+width,(int) y+10,32,32,null); //placeholder
-            g.drawImage(Images.loading,0,0,800,600,null); //placeholder
+			for (Item m: handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems())
+			{
+				System.out.println("For loop entered.");
+				if (m.getName().equals("Coin"))
+				{
+					if (m.getCount() >= 3)
+					{
+						m.setCount(m.getCount() - 3);
+						coins3Delivered = true;
+					}
+				}
+				if (m.getName().equals("World-1 Key"))
+				{
+					if (m.getCount() >= 1)
+					{
+						m.setCount(m.getCount() - 1);
+						key1Delivered = true;
+					}
+				}
+			}
+			if (coins3Delivered && key1Delivered)
+			{
+				g.drawImage(Images.EP,(int) x+width,(int) y+10,32,32,null);
+				System.out.println("Quest completed successful");
+				//boolean questComplete1 = true;
+			}
         }
     }
-        
-    public Boolean getQuestStatus()
-    {
-    	return questComplete;
-    }
+
 
     @Override
     public void die() {

@@ -5,6 +5,8 @@ import Main.Handler;
 
 import java.awt.*;
 
+import Game.Entities.Creatures.Player;
+
 /**
  * Created by Elemental on 1/1/2017.
  */
@@ -130,6 +132,11 @@ public abstract class EntityBase {
     public void setActive(boolean active) {
         this.active = active;
     }
+
+	public void render(Graphics g, Player p) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }
