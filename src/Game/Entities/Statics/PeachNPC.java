@@ -50,7 +50,6 @@ public class PeachNPC extends StaticEntity {
         }
 
         if(handler.getKeyManager().attbut){
-        	//handler.getWorld().getEntityManager().addEntity(new Koopa(handler, 100, 100));
             EP=true;
 
         }else if(!handler.getKeyManager().attbut){
