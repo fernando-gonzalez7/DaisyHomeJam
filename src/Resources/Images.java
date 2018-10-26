@@ -39,6 +39,12 @@ public class Images {
 	public static BufferedImage[] goomba_front;
 	public static BufferedImage[] goomba_back;
 
+	//Koopa
+	public static BufferedImage[] koopa_right;
+	public static BufferedImage[] koopa_left;
+	public static BufferedImage[] koopa_front;
+	public static BufferedImage[] koopa_back;
+
 	//Princess Peach
 	public static BufferedImage[] princesspeach;
 
@@ -65,6 +71,7 @@ public class Images {
 	public static BufferedImage spellGUI;
 
 	public static BufferedImage[] fountain;
+	public static BufferedImage[] drystatue;
 
 
 	public Images() {
@@ -85,11 +92,9 @@ public class Images {
 		SpriteSheet fountainsheet = new SpriteSheet(Images.loadImage("/Sheets/FountainSheet.png"));
 		SpriteSheet statuesheet = new SpriteSheet(Images.loadImage("/Sheets/StatueSheet.png"));
 		SpriteSheet npcsheet = new SpriteSheet(Images.loadImage("/Sheets/NPCSheet.png"));
-
-
-
-
-
+		SpriteSheet koopasheet = new SpriteSheet(Images.loadImage("/Sheets/KoopaSheet.png"));
+		SpriteSheet deserttiles = new SpriteSheet(Images.loadImage("/Sheets/DesertTiles.png"));
+		SpriteSheet drybonesstatue = new SpriteSheet(Images.loadImage("/Sheets/DryBonesStatue.png"));
 
 		blocks = new BufferedImage[256];
 
@@ -111,6 +116,13 @@ public class Images {
 		goomba_right = new BufferedImage[8];
 		goomba_front = new BufferedImage[8];
 		goomba_back = new BufferedImage[8];
+		
+		//Koopa
+		koopa_left = new BufferedImage[8];
+		koopa_right = new BufferedImage[8];
+		koopa_front = new BufferedImage[8];
+		koopa_back = new BufferedImage[8];
+		
 
 		//Peach
 		princesspeach = new BufferedImage[4];
@@ -126,6 +138,8 @@ public class Images {
 
 		//Fountain
 		fountain = new BufferedImage[3];
+		
+		drystatue = new BufferedImage[6];
 
 		FireBallLeft = new BufferedImage[6];
 		FireBallRight = new BufferedImage[6];
@@ -218,7 +232,7 @@ public class Images {
 			items[3]= inventorysheet.crop(104,2,iwidth,iheight);  //Coin
 			items[4]= inventorysheet.crop(2,2,iwidth,iheight);    //Super Mushroom (+Attack)
 			items[5]= inventorysheet.crop(36,2,iwidth,iheight);   //1-Up (+Health)
-			items[6]= inventorysheet.crop(308,70,iwidth,iheight); //World 1 Key (Meat)
+			items[6]= inventorysheet.crop(274,36,iwidth,iheight); //World 1 Key (Meat)
 
 
 			//Updated Number Sprites
@@ -245,7 +259,8 @@ public class Images {
 
 
 			//block images,array index is equal to block id
-
+			
+			//World 1 (Peach Garden)
 			//New Grass Tiles
 			blocks[1] = peachtiles.crop(2,2,Bwidth,Bheight); //Empty Grass
 			blocks[2] = peachtiles.crop(68,2,Bwidth,Bheight); //1 Grass
@@ -276,12 +291,27 @@ public class Images {
 			//Bushes
 			blocks[14] = peachtiles.crop(478,68,60,224); //Long Bush
 			blocks[15] = peachtiles.crop(540,68,60,128); //Short Bush
-
+			
+			//World 2 (Desert)
+			blocks[16] = deserttiles.crop(2,2,Bwidth,Bheight);      //Desert "grass"
+			blocks[17] = deserttiles.crop(68,2,Bwidth,Bheight);     //Desert "Walls"
+			blocks[18] = deserttiles.crop(134,2,Bwidth,Bheight);    //Empty Block (No Grass)
+			blocks[19] = deserttiles.crop(2,68,134,230);            //? Block (No Grass)
+			blocks[20] = deserttiles.crop(134,68,64,160);           //Short Desert Pillar
+			blocks[21] = deserttiles.crop(204,68,64,320);           //Long Desert Pillar						
 
 			//Fountain
 			fountain[0] = fountainsheet.crop(2,2,216,226);
 			fountain[1] = fountainsheet.crop(220,2,216,226);
 			fountain[2] = fountainsheet.crop(438,2,216,226);
+			
+			//Dry Bones Statue
+			drystatue[0] = drybonesstatue.crop(2,2,134,262);
+			drystatue[1] = drybonesstatue.crop(138,2,134,262);
+			drystatue[2] = drybonesstatue.crop(274,2,134,262);
+			drystatue[3] = drybonesstatue.crop(410,2,134,262);
+			drystatue[4] = drybonesstatue.crop(546,2,134,262);
+			drystatue[5] = drybonesstatue.crop(682,2,134,262);
 
 
 			//Mario Animations
@@ -327,6 +357,7 @@ public class Images {
 			marioidle_front[0]=mariorun.crop(118,306,width,height);
 			marioidle_left[0]=mariorun.crop(176,306,width,height);
 
+			//Enemies
 
 			//Goomba Animations
 			goomba_front[0]=goombasheet.crop(2,2,44,48);
@@ -364,7 +395,44 @@ public class Images {
 			goomba_back[5]=goombasheet.crop(232,152,44,48);
 			goomba_back[6]=goombasheet.crop(278,152,44,48);
 			goomba_back[7]=goombasheet.crop(324,152,44,48);
+			
+			//Koopa
+			koopa_front[0]=koopasheet.crop(2,2,54,74);
+			koopa_front[1]=koopasheet.crop(58,2,54,74);
+			koopa_front[2]=koopasheet.crop(114,2,54,74);
+			koopa_front[3]=koopasheet.crop(170,2,54,74);
+			koopa_front[4]=koopasheet.crop(226,2,54,74);
+			koopa_front[5]=koopasheet.crop(282,2,54,74);
+			koopa_front[6]=koopasheet.crop(338,2,54,74);
+			koopa_front[7]=koopasheet.crop(394,2,54,74);
 
+			koopa_left[0]=koopasheet.crop(2,78,54,74);
+			koopa_left[1]=koopasheet.crop(58,78,54,74);
+			koopa_left[2]=koopasheet.crop(114,78,54,74);
+			koopa_left[3]=koopasheet.crop(170,78,54,74);
+			koopa_left[4]=koopasheet.crop(226,78,54,74);
+			koopa_left[5]=koopasheet.crop(282,78,54,74);
+			koopa_left[6]=koopasheet.crop(338,78,54,74);
+			koopa_left[7]=koopasheet.crop(394,78,54,74);
+			
+			koopa_right[0]=koopasheet.crop(2,154,54,74);
+			koopa_right[1]=koopasheet.crop(58,154,54,74);
+			koopa_right[2]=koopasheet.crop(114,154,54,74);
+			koopa_right[3]=koopasheet.crop(170,154,54,74);
+			koopa_right[4]=koopasheet.crop(226,154,54,74);
+			koopa_right[5]=koopasheet.crop(282,154,54,74);
+			koopa_right[6]=koopasheet.crop(338,154,54,74);
+			koopa_right[7]=koopasheet.crop(394,154,54,74);
+			
+			koopa_back[0]=koopasheet.crop(2,230,54,74);
+			koopa_back[1]=koopasheet.crop(58,230,54,74);
+			koopa_back[2]=koopasheet.crop(114,230,54,74);
+			koopa_back[3]=koopasheet.crop(170,230,54,74);
+			koopa_back[4]=koopasheet.crop(226,230,54,74);
+			koopa_back[5]=koopasheet.crop(282,230,54,74);
+			koopa_back[6]=koopasheet.crop(338,230,54,74);
+			koopa_back[7]=koopasheet.crop(394,230,54,74);
+			
 			//NPCS
 
 			//Peach
