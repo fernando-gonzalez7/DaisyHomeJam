@@ -90,7 +90,8 @@ public class Images {
 
 	public static BufferedImage[] fountain;
 	public static BufferedImage[] drystatue;
-
+	public static BufferedImage[] firepillar;
+	
 
 	public Images() {
 
@@ -116,6 +117,9 @@ public class Images {
 		SpriteSheet chainchompsheet = new SpriteSheet(Images.loadImage("/Sheets/ChainChompSheet.png"));
 		SpriteSheet drybonessheet = new SpriteSheet(Images.loadImage("/Sheets/DryBonesSheet.png"));
 		SpriteSheet luigisheet = new SpriteSheet(Images.loadImage("/Sheets/LuigiSheet.png"));
+		SpriteSheet firepillarsheet = new SpriteSheet(Images.loadImage("/Sheets/FirePillar.png"));
+		SpriteSheet bowsertiles = new SpriteSheet(Images.loadImage("/Sheets/BowserTiles.png"));
+		
 
 
 		blocks = new BufferedImage[256];
@@ -180,6 +184,8 @@ public class Images {
 		fountain = new BufferedImage[3];
 
 		drystatue = new BufferedImage[6];
+		
+		firepillar = new BufferedImage[6];
 
 		FireBallLeft = new BufferedImage[6];
 		FireBallRight = new BufferedImage[6];
@@ -209,6 +215,8 @@ public class Images {
 			BTitle[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitleP.png"));
 			Options[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Options.png"));
 			Options[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/OptionsP.png"));
+			
+			
 
 			//icon
 			icon = new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/Sheets/MushroomIcon.png")));
@@ -342,7 +350,12 @@ public class Images {
 			blocks[21] = deserttiles.crop(204,68,64,320);           //Long Desert Pillar	
 			blocks[22] = deserttiles.crop(200,2,Bwidth,Bheight);    //? Block (No Grass)
 
-
+			//Bowser World
+			blocks[23] = bowsertiles.crop(1,1,Bwidth,Bheight);       //Bowser Floor
+			blocks[24] = bowsertiles.crop(66,1,Bwidth,Bheight);     //Bowser Walls
+			blocks[25] = bowsertiles.crop(131,1,Bwidth,Bheight);    //Luigi Block
+			blocks[26] = ImageIO.read(getClass().getResourceAsStream("/Sheets/bowserlogo.png"));   //Logo  floor
+			
 			//Fountain
 			fountain[0] = fountainsheet.crop(2,2,216,226);
 			fountain[1] = fountainsheet.crop(220,2,216,226);
@@ -356,7 +369,14 @@ public class Images {
 			drystatue[4] = drybonesstatue.crop(546,2,134,262);
 			drystatue[5] = drybonesstatue.crop(682,2,134,262);
 
-
+			//Fire Pillar
+			firepillar[0] = firepillarsheet.crop(2,2,124,370);
+			firepillar[1] = firepillarsheet.crop(128,2,124,370);
+			firepillar[2] = firepillarsheet.crop(254,2,124,370);
+			firepillar[3] = firepillarsheet.crop(380,2,124,370);
+			firepillar[4] = firepillarsheet.crop(506,2,124,370);
+			firepillar[5] = firepillarsheet.crop(632,2,124,370);
+			
 			//Mario Animations
 			player_front[0]=mariorun.crop(2,2,width,height);
 			player_front[1]=mariorun.crop(60,2,width,height);
