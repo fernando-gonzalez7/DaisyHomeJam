@@ -15,9 +15,9 @@ import java.awt.event.KeyEvent;
 public class PeachNPC extends StaticEntity {
 
 	//Phase 4
-	public static Boolean questComplete1 = false;
-	boolean coins3Delivered;
-	boolean key1Delivered;
+	public static boolean questComplete1 = false;
+	public static boolean coins3Delivered;
+	public static boolean key1Delivered;
 	
     private Rectangle ir = new Rectangle();
     public Boolean EP = false;
@@ -28,10 +28,10 @@ public class PeachNPC extends StaticEntity {
         super(handler, x, y, 94, 48);
         this.world=world;
         health=10000000;
-        bounds.x=6;
-        bounds.y=44;
-        bounds.width = 40;
-        bounds.height = 52;
+        bounds.x=0;
+        bounds.y=0;
+        bounds.width = 100;
+        bounds.height = 64;
 
         ir.width = bounds.width;
         ir.height = bounds.height;
@@ -78,11 +78,13 @@ public class PeachNPC extends StaticEntity {
         if(ir.contains(pr) && !EP)
         {
             g.drawImage(Images.E,(int) x+width,(int) y+10,32,32,null);
-            System.out.println("Contact successful");
+            //System.out.println("Contact successful");
         }
         //If E is pressed then 
         else if(ir.contains(pr) && EP)
         {
+            //System.out.println("E pressed");
+            
 			for (Item m: handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems())
 			{
 				System.out.println("For loop entered.");
