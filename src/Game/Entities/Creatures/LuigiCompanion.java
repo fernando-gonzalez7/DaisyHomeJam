@@ -13,7 +13,7 @@ import java.util.Random;
 /**
  * Created by Elemental on 2/7/2017.
  */
-public class Koopa extends CreatureBase  {
+public class LuigiCompanion extends CreatureBase  {
 
 
     private Animation animDown, animUp, animLeft, animRight;
@@ -30,7 +30,7 @@ public class Koopa extends CreatureBase  {
     private int moveCount = 0;
     private int direction;
 
-    public Koopa(Handler handler, float x, float y) {
+    public LuigiCompanion(Handler handler, float x, float y) {
         super(handler, x, y, 74, 54);
         bounds.x=22;
         bounds.y=37;
@@ -38,7 +38,6 @@ public class Koopa extends CreatureBase  {
         bounds.height=38;
         speed=2.0f;
         health=40;
-        isenemy = true;
 
         koopacam= new Rectangle();
 
@@ -126,7 +125,7 @@ public class Koopa extends CreatureBase  {
             for (EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
                 if (e.equals(this))
                     continue;
-                if (e.getCollisionBounds(0, 0).intersects(ar) && e.equals(handler.getWorld().getEntityManager().getPlayer())) {
+                if (e.getCollisionBounds(0, 0).intersects(ar) && !(e.equals(handler.getWorld().getEntityManager().getPlayer()))) {
 
                     checkAttacks();
                     return;

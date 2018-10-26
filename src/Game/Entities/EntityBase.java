@@ -23,6 +23,15 @@ public abstract class EntityBase {
     protected Rectangle bounds;
     protected boolean beinghurt=false;
     protected int count = 0;
+    protected boolean isenemy = false;
+
+    public boolean isIsenemy() {
+		return isenemy;
+	}
+
+	public void setIsenemy(boolean isenemy) {
+		this.isenemy = isenemy;
+	}
 
 
     public EntityBase(Handler handler, float x, float y, int height, int width){
@@ -50,18 +59,21 @@ public abstract class EntityBase {
             die();
         }
     }
-    public void renderLife(Graphics g) {
-        if (beinghurt && count <=8){
-            if(count == 8){
-                count = 0;
-                beinghurt=false;
-            }
-
-            g.drawImage(Images.numbers[getHealth()],(int)(x-handler.getGameCamera().getxOffset()+bounds.x),(int)(y-handler.getGameCamera().getyOffset()-getHeight()+(bounds.height/3)),32,22,null);
-            count++;
-
-        }
-    }
+//    public void renderLife(Graphics g) {
+//        if (beinghurt && count <=8){
+//            if(count == 8){
+//                count = 0;
+//                beinghurt=false;
+//            }
+//
+//            g.drawImage(Images.numbers[getHealth()],(int)(x-handler.getGameCamera().getxOffset()+bounds.x),(int)(y-handler.getGameCamera().getyOffset()-getHeight()+(bounds.height/3)),32,22,null);
+//            if (getHealth() < 0) {
+//            	;
+//            }
+//            count++;
+//
+//        }
+//    }
 
     public boolean checkEntityCollisions(float xOffset, float yOffset){
         for(EntityBase e : handler.getWorld().getEntityManager().getEntities()){

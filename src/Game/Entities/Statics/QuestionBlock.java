@@ -31,7 +31,7 @@ public class QuestionBlock extends StaticEntity {
         bounds.y=0;
         bounds.width = 64;
         bounds.height = 64;
-        health=16;
+        health=10;
 
         try {
             audioFile = new File("res/music/Pickaxe.wav");
@@ -70,7 +70,7 @@ public class QuestionBlock extends StaticEntity {
 
     @Override
     public void render(Graphics g) {
-        renderLife(g);
+//        renderLife(g);
         g.drawImage(Images.blocks[10],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 
     }

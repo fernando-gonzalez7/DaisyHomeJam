@@ -45,6 +45,12 @@ public class Images {
 	public static BufferedImage[] koopa_front;
 	public static BufferedImage[] koopa_back;
 
+	//Koopa
+	public static BufferedImage[] drybones_right;
+	public static BufferedImage[] drybones_left;
+	public static BufferedImage[] drybones_front;
+	public static BufferedImage[] drybones_back;
+
 	//Chain Chomp
 	public static BufferedImage[] chain_right;
 	public static BufferedImage[] chain_left;
@@ -102,6 +108,7 @@ public class Images {
 		SpriteSheet deserttiles = new SpriteSheet(Images.loadImage("/Sheets/DesertTiles.png"));
 		SpriteSheet drybonesstatue = new SpriteSheet(Images.loadImage("/Sheets/DryBonesStatue.png"));
 		SpriteSheet chainchompsheet = new SpriteSheet(Images.loadImage("/Sheets/ChainChompSheet.png"));
+		SpriteSheet drybonessheet = new SpriteSheet(Images.loadImage("/Sheets/DryBonesSheet.png"));
 
 
 		blocks = new BufferedImage[256];
@@ -130,6 +137,12 @@ public class Images {
 		koopa_right = new BufferedImage[8];
 		koopa_front = new BufferedImage[8];
 		koopa_back = new BufferedImage[8];
+
+		//Dry Bones
+		drybones_left = new BufferedImage[8];
+		drybones_right = new BufferedImage[8];
+		drybones_front = new BufferedImage[8];
+		drybones_back = new BufferedImage[8];
 
 		//Chain
 		chain_left = new BufferedImage[4];
@@ -454,21 +467,59 @@ public class Images {
 			chain_front[1]=chainchompsheet.crop(100,2,96,88);
 			chain_front[2]=chainchompsheet.crop(198,2,96,88);
 			chain_front[3]=chainchompsheet.crop(296,2,96,88);
-			
+
 			chain_left[0]=chainchompsheet.crop(2,92,96,88);
 			chain_left[1]=chainchompsheet.crop(100,92,96,88);
 			chain_left[2]=chainchompsheet.crop(198,92,96,88);
 			chain_left[3]=chainchompsheet.crop(296,92,96,88);
-			
+
 			chain_right[0]=chainchompsheet.crop(2,182,96,88);
 			chain_right[1]=chainchompsheet.crop(100,182,96,88);
 			chain_right[2]=chainchompsheet.crop(198,182,96,88);
 			chain_right[3]=chainchompsheet.crop(296,182,96,88);
-			
+
 			chain_back[0]=chainchompsheet.crop(2,272,96,88);
 			chain_back[1]=chainchompsheet.crop(100,272,96,88);
 			chain_back[2]=chainchompsheet.crop(198,272,96,88);
 			chain_back[3]=chainchompsheet.crop(296,272,96,88);
+
+			//Dry Bones
+			drybones_front[0]=drybonessheet.crop(2,2,46,74);
+			drybones_front[1]=drybonessheet.crop(50,2,46,74);
+			drybones_front[2]=drybonessheet.crop(98,2,46,74);
+			drybones_front[3]=drybonessheet.crop(146,2,46,74);
+			drybones_front[4]=drybonessheet.crop(194,2,46,74);
+			drybones_front[5]=drybonessheet.crop(242,2,46,74);
+			drybones_front[6]=drybonessheet.crop(290,2,46,74);
+			drybones_front[7]=drybonessheet.crop(338,2,46,74);
+			
+			drybones_left[0]=drybonessheet.crop(2,78,46,74);
+			drybones_left[1]=drybonessheet.crop(50,78,46,74);
+			drybones_left[2]=drybonessheet.crop(98,78,46,74);
+			drybones_left[3]=drybonessheet.crop(146,78,46,74);
+			drybones_left[4]=drybonessheet.crop(194,78,46,74);
+			drybones_left[5]=drybonessheet.crop(242,78,46,74);
+			drybones_left[6]=drybonessheet.crop(290,78,46,74);
+			drybones_left[7]=drybonessheet.crop(338,78,46,74);
+			
+			drybones_right[0]=drybonessheet.crop(2,154,46,74);
+			drybones_right[1]=drybonessheet.crop(50,154,46,74);
+			drybones_right[2]=drybonessheet.crop(98,154,46,74);
+			drybones_right[3]=drybonessheet.crop(146,154,46,74);
+			drybones_right[4]=drybonessheet.crop(194,154,46,74);
+			drybones_right[5]=drybonessheet.crop(242,154,46,74);
+			drybones_right[6]=drybonessheet.crop(290,154,46,74);
+			drybones_right[7]=drybonessheet.crop(338,154,46,74);
+			
+			drybones_back[0]=drybonessheet.crop(2,230,46,74);
+			drybones_back[1]=drybonessheet.crop(50,230,46,74);
+			drybones_back[2]=drybonessheet.crop(98,230,46,74);
+			drybones_back[3]=drybonessheet.crop(146,230,46,74);
+			drybones_back[4]=drybonessheet.crop(194,230,46,74);
+			drybones_back[5]=drybonessheet.crop(242,230,46,74);
+			drybones_back[6]=drybonessheet.crop(290,230,46,74);
+			drybones_back[7]=drybonessheet.crop(338,230,46,74);
+			
 			
 			//NPCS			
 

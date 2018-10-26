@@ -1,10 +1,8 @@
 package Worlds;
-
-import Game.Entities.Creatures.Player;
-import Game.Entities.Creatures.Goomba;
-import Game.Entities.Creatures.Koopa;
+import Game.Entities.Creatures.*;
 import Game.Entities.Statics.*;
 import Main.Handler;
+
 
 /**
  * Created by Elemental on 1/2/2017.
@@ -13,6 +11,7 @@ public class World1 extends BaseWorld{
 
 	private Handler handler;
 	private BaseWorld caveWorld;
+	
 
 	public World1(Handler handler, String path, Player player){
 		super(handler,path,player);
@@ -54,7 +53,7 @@ public class World1 extends BaseWorld{
 		entityManager.addEntity(new ShortBush(handler, 600, 975));
 		entityManager.addEntity(new ShortBush(handler, 920, 1150));
 		entityManager.addEntity(new QuestionBlock(handler, 775, 1280));
-		entityManager.addEntity(new Goomba(handler, 775, 700));
+		entityManager.addEntity(new Goomba(handler, 775, 710));
 		entityManager.addEntity(new Tree(handler, 240, 1250));
 		entityManager.addEntity(new Tree(handler, 1160, 325));
 		entityManager.addEntity(new Tree(handler, 1380, 325));
@@ -72,11 +71,4 @@ public class World1 extends BaseWorld{
 		entityManager.getPlayer().setY(spawnY);
 	}
 	
-	@Override
-	public void tick()
-	{
-		entityManager.tick();
-		itemManager.tick();
-	}
-
 }

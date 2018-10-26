@@ -22,8 +22,9 @@ public abstract class CreatureBase extends EntityBase {
             DEFAULT_CREATURE_HEIGHT = 64;
 
     protected int attack=6;
-
-    protected float speed;
+    
+  
+	protected float speed;
     protected float xMove, yMove;
 
     protected long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;

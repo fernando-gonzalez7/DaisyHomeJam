@@ -31,7 +31,7 @@ public class Rock extends StaticEntity {
         bounds.y=14;
         bounds.width = 60;
         bounds.height = 56;
-        health=16;
+        health=10;
 
         try {
             audioFile = new File("res/music/Pickaxe.wav");
@@ -70,7 +70,7 @@ public class Rock extends StaticEntity {
 
     @Override
     public void render(Graphics g) {
-        renderLife(g);
+        //renderLife(g);
         g.drawImage(Images.blocks[11],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 
     }

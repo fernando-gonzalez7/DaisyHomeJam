@@ -13,7 +13,7 @@ import java.util.Random;
 /**
  * Created by Elemental on 2/7/2017.
  */
-public class Koopa extends CreatureBase  {
+public class DryBones extends CreatureBase  {
 
 
     private Animation animDown, animUp, animLeft, animRight;
@@ -21,8 +21,8 @@ public class Koopa extends CreatureBase  {
     private Boolean attacking=false;
 
     private int animWalkingSpeed = 50;
-    private Inventory koopainventory;
-    private Rectangle koopacam;
+    private Inventory drybonesinventory;
+    private Rectangle drybonescam;
 
     private int healthcounter = 0;
 
@@ -30,31 +30,31 @@ public class Koopa extends CreatureBase  {
     private int moveCount = 0;
     private int direction;
 
-    public Koopa(Handler handler, float x, float y) {
-        super(handler, x, y, 74, 54);
-        bounds.x=22;
-        bounds.y=37;
-        bounds.width=36;
-        bounds.height=38;
+    public DryBones(Handler handler, float x, float y) {
+        super(handler, x, y, 74, 46);
+        bounds.x=7;
+        bounds.y=35;
+        bounds.width=31;
+        bounds.height=39;
         speed=2.0f;
         health=40;
         isenemy = true;
 
-        koopacam= new Rectangle();
+        drybonescam= new Rectangle();
 
 
 
         randint = new Random();
         direction = randint.nextInt(4) + 1;
 
-        animDown = new Animation(animWalkingSpeed, Images.koopa_front);
-        animLeft = new Animation(animWalkingSpeed,Images.koopa_left);
-        animRight = new Animation(animWalkingSpeed,Images.koopa_right);
-        animUp = new Animation(animWalkingSpeed,Images.koopa_back);
+        animDown = new Animation(animWalkingSpeed, Images.drybones_front);
+        animLeft = new Animation(animWalkingSpeed,Images.drybones_left);
+        animRight = new Animation(animWalkingSpeed,Images.drybones_right);
+        animUp = new Animation(animWalkingSpeed,Images.drybones_back);
         
         
 
-        koopainventory= new Inventory(handler);
+        drybonesinventory= new Inventory(handler);
     }
 
     @Override
@@ -85,7 +85,7 @@ public class Koopa extends CreatureBase  {
         }
 
 
-        koopainventory.tick();
+        drybonesinventory.tick();
 
 
     }
@@ -95,13 +95,13 @@ public class Koopa extends CreatureBase  {
         xMove = 0;
         yMove = 0;
 
-        koopacam.x = (int) (x - handler.getGameCamera().getxOffset() - (64 * 3));
-        koopacam.y = (int) (y - handler.getGameCamera().getyOffset() - (64 * 3));
-        koopacam.width = 64 * 7;
-        koopacam.height = 64 * 7;
+        drybonescam.x = (int) (x - handler.getGameCamera().getxOffset() - (64 * 3));
+        drybonescam.y = (int) (y - handler.getGameCamera().getyOffset() - (64 * 3));
+        drybonescam.width = 64 * 7;
+        drybonescam.height = 64 * 7;
 
-        if (koopacam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset())
-                || koopacam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset() + handler.getWorld().getEntityManager().getPlayer().getWidth(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset() + handler.getWorld().getEntityManager().getPlayer().getHeight())) {
+        if (drybonescam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset())
+                || drybonescam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset() + handler.getWorld().getEntityManager().getPlayer().getWidth(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset() + handler.getWorld().getEntityManager().getPlayer().getHeight())) {
 
             Rectangle cb = getCollisionBounds(0, 0);
             Rectangle ar = new Rectangle();
@@ -180,7 +180,7 @@ public class Koopa extends CreatureBase  {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight, Images.koopa_front,Images.koopa_back,Images.koopa_left,Images.koopa_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+        g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight, Images.drybones_front,Images.drybones_back,Images.drybones_left,Images.drybones_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
         if(isBeinghurt() && healthcounter<=120){
             g.setColor(Color.white);
             g.drawString("Health: " + getHealth(),(int) (x-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()-20));

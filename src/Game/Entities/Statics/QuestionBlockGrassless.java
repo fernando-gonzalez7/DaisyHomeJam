@@ -70,7 +70,7 @@ public class QuestionBlockGrassless extends StaticEntity {
 
     @Override
     public void render(Graphics g) {
-        renderLife(g);
+        //renderLife(g);
         g.drawImage(Images.blocks[22],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 
     }
