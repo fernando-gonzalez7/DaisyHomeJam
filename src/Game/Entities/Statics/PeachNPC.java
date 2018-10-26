@@ -6,6 +6,7 @@ import Game.Items.Item;
 import Main.Handler;
 import Resources.Images;
 import Worlds.BaseWorld;
+import Worlds.CaveWorld;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -71,7 +72,6 @@ public class PeachNPC extends StaticEntity {
 
         Rectangle pr = p.getCollisionBounds(0,44);
 
-        //TODO
         //Interaction with player code
         
         //If E is not pressed display that an action is available
@@ -84,6 +84,8 @@ public class PeachNPC extends StaticEntity {
         else if(ir.contains(pr) && EP)
         {
             //System.out.println("E pressed");
+        	//TODO
+        	//The image for the quest needs to be added here.
             
 			for (Item m: handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems())
 			{
@@ -107,9 +109,17 @@ public class PeachNPC extends StaticEntity {
 			}
 			if (coins3Delivered && key1Delivered)
 			{
+				//TODO
+				//Image needs to be replaced
 				g.drawImage(Images.EP,(int) x+width,(int) y+10,32,32,null);
 				System.out.println("Quest completed successful");
-				//boolean questComplete1 = true;
+				//Add DOOR code HERE
+			}
+			else if(!coins3Delivered || !key1Delivered)
+			{
+				//TODO
+				//Add images and dynamic numbers showing what items are still needed for the quest.
+				System.out.println("Missing items for quest.");
 			}
         }
     }
