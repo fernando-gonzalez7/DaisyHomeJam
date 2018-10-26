@@ -45,6 +45,7 @@ public class Player extends CreatureBase {
 	private Boolean LaunchedFireBallU=false;
 	private Boolean LaunchedFireBallD=false;
 	private Boolean attacking=false;
+	public static boolean luigisummon = false;
 
 	private int animWalkingSpeed = 50;
 	private int animFireSpeed = 250;
@@ -321,13 +322,23 @@ public class Player extends CreatureBase {
 			}
 		}
 		
-		//Uses the Super Mushroom (+attack) item
-		
+		//Uses the Super Mushroom (+attack) item		
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_J)) {
 			for (Item m: getInventory().getInventoryItems()) {
 				if (m.getName().equals("Super Mushroom")) {
 					handler.getWorld().getEntityManager().getPlayer().attack += 5;
 					m.setCount(m.getCount() - 1);
+				}
+			}
+			
+		}
+		
+		//Summons Luigi
+		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
+			for (Item l: getInventory().getInventoryItems()) {
+				if (l.getName().equals("Luigi Cap")) {
+					luigisummon = true;
+					l.setCount(l.getCount() - 1);
 				}
 			}
 			

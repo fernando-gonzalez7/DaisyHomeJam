@@ -46,4 +46,18 @@ public class CaveWorld extends BaseWorld{
 		entityManager.addEntity(new QuestionBlockGrassless(handler, 650, 750));
 		entityManager.addEntity(new ChainChomp(handler, 1300, 1450));
 	}
+	
+	@Override
+	public void tick() {
+		entityManager.tick();
+		itemManager.tick();
+		
+		if (Player.luigisummon == true) {
+			entityManager.addEntity(new LuigiCompanion (handler, handler.getWorld().getEntityManager().getPlayer().getX()+30, 
+					handler.getWorld().getEntityManager().getPlayer().getY()+30));
+			Player.luigisummon = false;
+		}
+		
+	}
+
 }

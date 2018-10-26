@@ -1,6 +1,7 @@
 package Worlds;
 import Game.Entities.Creatures.*;
 import Game.Entities.Statics.*;
+import Game.GameStates.State;
 import Main.Handler;
 
 
@@ -11,9 +12,6 @@ public class World1 extends BaseWorld{
 
 	private Handler handler;
 	private BaseWorld caveWorld;
-	
-	public static boolean isdoor = false;
-	
 
 	public World1(Handler handler, String path, Player player){
 		super(handler,path,player);
@@ -26,7 +24,7 @@ public class World1 extends BaseWorld{
 		entityManager.addEntity(new LongBush(handler, 120, 200));
 		entityManager.addEntity(new LongBush(handler, 330, 200));
 		entityManager.addEntity(new Tree(handler, 80, 450));
-		entityManager.addEntity(new LuigiCompanion(handler, 340, 600));
+		entityManager.addEntity(new Goomba(handler, 340, 600));
 		entityManager.addEntity(new Tree(handler, 300, 650));
 		entityManager.addEntity(new Tree(handler, 80, 900));
 		entityManager.addEntity(new LongBush(handler, 120, 1200));
@@ -76,14 +74,28 @@ public class World1 extends BaseWorld{
 		entityManager.getPlayer().setY(spawnY);
 	}
 
+	@Override
+	public void tick() {
+		entityManager.tick();
+		itemManager.tick();
+		
+		if (Player.luigisummon == true) {
+			entityManager.addEntity(new LuigiCompanion (handler, handler.getWorld().getEntityManager().getPlayer().getX()+30, 
+					handler.getWorld().getEntityManager().getPlayer().getY()+30));
+			Player.luigisummon = false;
+		}
+		
+		 countP++;
+	        if(countP>=30){
+	            countP=30;
+	        }
 
-	public static boolean isIsdoor() {
-		return isdoor;
+	        if(handler.getKeyManager().pbutt && countP>=30){
+	            handler.getMouseManager().setUimanager(null);
+	            countP=0;
+	            State.setState(handler.getGame().pauseState);
+	        }
+		
 	}
 
-
-	public static void setIsdoor(boolean isdoor) {
-		World1.isdoor = isdoor;
-	}
-	
 }

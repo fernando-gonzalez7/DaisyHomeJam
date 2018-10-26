@@ -36,7 +36,7 @@ public class LuigiCompanion extends CreatureBase  {
         bounds.y=43;
         bounds.width=36;
         bounds.height=43;
-        speed=2.0f;
+        speed=this.speed*(float)1.2;;
         health=45;
 
         luigicam= new Rectangle();
