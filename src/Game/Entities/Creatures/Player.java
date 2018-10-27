@@ -1,14 +1,12 @@
 package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
-import Game.Entities.Statics.Door;
 import Game.GameStates.State;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
 import Game.SpellCast.SpellCastUI;
 import Resources.Animation;
 import Resources.Images;
-import Worlds.BaseWorld;
 import Worlds.CaveWorld;
 import Worlds.World1;
 import Worlds.World3;
@@ -261,7 +259,7 @@ public class Player extends CreatureBase {
 	@Override
 	public void die(){
 		System.out.println("You lose");
-		State.setState(handler.getGame().menuState);
+		State.setState(handler.getGame().gameOverState);
 	}
 
 	//World Debug variable
@@ -280,7 +278,6 @@ public class Player extends CreatureBase {
 		if(handler.getKeyManager().right&&! attacking)
 			xMove = speed;
 
-        //TODO
         //Skip World Debug
         int World1 = 1;
         int Cave = 2;
