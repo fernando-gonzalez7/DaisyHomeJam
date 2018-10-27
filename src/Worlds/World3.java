@@ -19,7 +19,8 @@ public class World3 extends BaseWorld{
 
 		//Stuff in the World go here
 		entityManager.addEntity(new FirePillar(handler, 500, 500));
-		entityManager.addEntity(new LuigiBlock(handler, 100, 100));
+		entityManager.addEntity(new LuigiBlock(handler, 600, 100));
+		entityManager.addEntity(new Bowser(handler, 300, 300));
 		
 		
 

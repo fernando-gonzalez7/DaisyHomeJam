@@ -13,7 +13,7 @@ import java.util.Random;
 /**
  * Created by Elemental on 2/7/2017.
  */
-public class ChainChomp extends CreatureBase  {
+public class Bowser extends CreatureBase  {
 
 
     private Animation animDown, animUp, animLeft, animRight;
@@ -30,14 +30,14 @@ public class ChainChomp extends CreatureBase  {
     private int moveCount = 0;
     private int direction;
 
-    public ChainChomp(Handler handler, float x, float y) {
-        super(handler, x, y, 88, 96);
-        bounds.x=0;
-        bounds.y=0;
-        bounds.width=96;
-        bounds.height=88;
-        speed=2.0f;
-        health=40;
+    public Bowser(Handler handler, float x, float y) {
+        super(handler, x, y, 138, 138);
+        bounds.x=4;
+        bounds.y=50;
+        bounds.width=131;
+        bounds.height=83;
+        speed=1.0f;
+        health=70;
 
         chainchompcam= new Rectangle();
 
@@ -46,10 +46,10 @@ public class ChainChomp extends CreatureBase  {
         randint = new Random();
         direction = randint.nextInt(4) + 1;
 
-        animDown = new Animation(animWalkingSpeed, Images.chain_front);
-        animLeft = new Animation(animWalkingSpeed,Images.chain_left);
-        animRight = new Animation(animWalkingSpeed,Images.chain_right);
-        animUp = new Animation(animWalkingSpeed,Images.chain_back);
+        animDown = new Animation(animWalkingSpeed, Images.bowser_front);
+        animLeft = new Animation(animWalkingSpeed,Images.bowser_left);
+        animRight = new Animation(animWalkingSpeed,Images.bowser_right);
+        animUp = new Animation(animWalkingSpeed,Images.bowser_back);
         
         
 
@@ -179,7 +179,7 @@ public class ChainChomp extends CreatureBase  {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight, Images.chain_front,Images.chain_back,Images.chain_left,Images.chain_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+        g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight, Images.bowser_front,Images.bowser_back,Images.bowser_left,Images.bowser_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
         if(isBeinghurt() && healthcounter<=120){
             g.setColor(Color.white);
             g.drawString("Health: " + getHealth(),(int) (x-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()-20));

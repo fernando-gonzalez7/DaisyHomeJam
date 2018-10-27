@@ -66,7 +66,7 @@ public class Player extends CreatureBase {
 		bounds.width=39;
 		bounds.height=39;
 		health=75;
-		this.attack=4;
+		this.attack=5;
 		this.speed = this.speed*(float)1.5;
 		
 
@@ -370,7 +370,7 @@ public class Player extends CreatureBase {
 				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.oneup);
 				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.world1key);
 				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.luigicap);
-
+				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.world2key);
 
 				NoItems = false;
 			}
@@ -383,6 +383,8 @@ public class Player extends CreatureBase {
 					if (i.getCount() == 0)
 					{
 						NoItems = true;
+						
+						
 					}
 				}
 			}
