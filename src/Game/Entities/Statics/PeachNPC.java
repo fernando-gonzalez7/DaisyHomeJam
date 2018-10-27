@@ -103,10 +103,7 @@ public class PeachNPC extends StaticEntity {
         //If E is pressed then 
         else if(ir.contains(pr) && EP)
         {
-            //System.out.println("E pressed");
-        	//TODO
-        	//The image for the quest needs to be added here.
-            
+
 			for (Item m: handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems())
 			{
 				System.out.println("For loop entered.");
@@ -134,20 +131,16 @@ public class PeachNPC extends StaticEntity {
 			}
 			if (coins3Delivered && key1Delivered)
 			{
-				//TODO
-				//Image needs to be replaced
+
 				g.drawImage(Images.EP,(int) x+width,(int) y+10,32,32,null);
 				
 				System.out.println("Quest completed successful");
 				questComplete1 = true;
-				//handler.getWorld().getEntityManager().addEntity(new Koopa(handler, 100, 100));
-				//World1.setIsdoor(true);
 				
 			}
 			else if(!coins3Delivered || !key1Delivered)
 			{
-				//TODO
-				//Add images and dynamic numbers showing what items are still needed for the quest.
+
 				System.out.println("Missing items for quest.");
 			}
         }
