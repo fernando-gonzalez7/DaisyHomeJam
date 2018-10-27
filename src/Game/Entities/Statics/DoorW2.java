@@ -44,7 +44,7 @@ public class DoorW2 extends StaticEntity {
         if(isBeinghurt()){
             setHealth(10000000);
         }
-        if (PeachNPC.questComplete1) {
+        if (YoshiNPC.questComplete2) {
             QC = true;
         }
         if(handler.getKeyManager().attbut){

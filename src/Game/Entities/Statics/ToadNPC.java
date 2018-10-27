@@ -18,7 +18,7 @@ public class ToadNPC extends StaticEntity {
 	//Phase 4
 	public static boolean finalquestcomplete = false;
 	public static boolean coins3Delivered = false;
-	public static boolean key1Delivered = false;
+	public static boolean key3Delivered = false;
 	public static int coinsneeded = 3;
 	public static int keyneeded = 1;
 	
@@ -57,7 +57,10 @@ public class ToadNPC extends StaticEntity {
         }else if(!handler.getKeyManager().attbut){
             EP=false;
         }
-
+        if (finalquestcomplete == true){
+        	State.setState(handler.getGame().victoryState);
+	
+}
     }
 
     @Override
@@ -80,10 +83,10 @@ public class ToadNPC extends StaticEntity {
         {
             g.drawImage(Images.questbox[2],(int) x+width+10,(int) y+10,113,83,null);
          
-         if (!key1Delivered) {
+         if (!key3Delivered) {
         	 g.drawImage(Images.questnumbers[1],(int) x+132,(int) y+57,24,24,null);
          }
-         if (key1Delivered) {
+         if (key3Delivered) {
         	 g.drawImage(Images.questnumbers[4],(int) x+132,(int) y+57,24,24,null);
          }
             
@@ -104,11 +107,11 @@ public class ToadNPC extends StaticEntity {
 					if (m.getCount() >= 1)
 					{
 						m.setCount(m.getCount() - 1);
-						key1Delivered = true;
+						key3Delivered = true;
 					}
 				}
 			}
-			if (key1Delivered)
+			if (key3Delivered)
 			{
 				//TODO
 				//Image needs to be replaced
@@ -116,12 +119,12 @@ public class ToadNPC extends StaticEntity {
 				
 				System.out.println("Quest completed successful");
 				finalquestcomplete = true;
-				State.setState(handler.getGame().victoryState);
+				//State.setState(handler.getGame().victoryState);
 				//handler.getWorld().getEntityManager().addEntity(new Koopa(handler, 100, 100));
 				//World1.setIsdoor(true);
 				
 			}
-			else if(!key1Delivered)
+			else if(!key3Delivered)
 			{
 				//TODO
 				//Add images and dynamic numbers showing what items are still needed for the quest.

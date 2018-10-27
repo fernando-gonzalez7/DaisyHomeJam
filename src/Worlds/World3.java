@@ -29,7 +29,7 @@ public class World3 extends BaseWorld{
 		entityManager.addEntity(new QuestionBlockGrassless(handler, 250, 750));
 		entityManager.addEntity(new QuestionBlockGrassless(handler, 600, 750));
 		entityManager.addEntity(new Bowser(handler, 350, 600));
-		entityManager.addEntity(new ToadNPC(handler, 100, 0,world3));
+		entityManager.addEntity(new ToadNPC(handler, 200, 0,world3));
 		
 		
 
