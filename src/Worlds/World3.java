@@ -1,7 +1,11 @@
 package Worlds;
+import java.awt.Graphics;
+
 import Game.Entities.Creatures.*;
-import Game.Entities.Statics.Rock;
+import Game.Entities.Statics.*;
+import Game.GameStates.State;
 import Main.Handler;
+import Resources.Images;
 
 
 public class World3 extends BaseWorld{
@@ -14,7 +18,36 @@ public class World3 extends BaseWorld{
 		this.player=player;
 
 		//Stuff in the World go here
-		entityManager.addEntity(new Rock(handler, 75, 370));
+		entityManager.addEntity(new FirePillar(handler, 500, 500));
+		entityManager.addEntity(new LuigiBlock(handler, 600, 100));
+		entityManager.addEntity(new Bowser(handler, 300, 300));
+		
+		
 
+
+  }
+	@Override
+	public void tick() {
+		entityManager.tick();
+		itemManager.tick();
+		
+		if (Player.luigisummon == true) {
+			entityManager.addEntity(new LuigiCompanion (handler, handler.getWorld().getEntityManager().getPlayer().getX()+30, 
+					handler.getWorld().getEntityManager().getPlayer().getY()+30));
+			Player.luigisummon = false;
+		}
+		
+		 countP++;
+	        if(countP>=30){
+	            countP=30;
+	        }
+
+	        if(handler.getKeyManager().pbutt && countP>=30){
+	            handler.getMouseManager().setUimanager(null);
+	            countP=0;
+	            State.setState(handler.getGame().pauseState);
+	        }
+		
 	}
+
 }

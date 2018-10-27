@@ -35,6 +35,10 @@ public class Tile {
     public static Tile desertwall = new BrickTile(Images.blocks[17],11);
     public static Tile emptybricknograss = new BrickTile(Images.blocks[18],12);
   
+    //World 3 (Bowser)
+    public static Tile castlefloor = new GrassTile(Images.blocks[23], 13);
+    public static Tile castlewall = new BrickTile(Images.blocks[24],14);
+    
     //CLASS
 
 

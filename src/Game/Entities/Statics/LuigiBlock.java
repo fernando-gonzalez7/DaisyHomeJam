@@ -14,7 +14,7 @@ import java.util.Random;
 /**
  * Created by Elemental on 1/2/2017.
  */
-public class QuestionBlock extends StaticEntity {
+public class LuigiBlock extends StaticEntity {
 
     private File audioFile;
     private AudioInputStream audioStream;
@@ -24,7 +24,7 @@ public class QuestionBlock extends StaticEntity {
     private Random randint;
     private int RNGR;
 
-    public QuestionBlock(Handler handler, float x, float y) {
+    public LuigiBlock(Handler handler, float x, float y) {
         super(handler, x, y, 64, 64);
 
         bounds.x=0;
@@ -71,7 +71,7 @@ public class QuestionBlock extends StaticEntity {
     @Override
     public void render(Graphics g) {
 //        renderLife(g);
-        g.drawImage(Images.blocks[10],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
+        g.drawImage(Images.blocks[25],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 
     }
 
@@ -80,15 +80,7 @@ public class QuestionBlock extends StaticEntity {
         randint=new Random();
         RNGR=randint.nextInt(3) + 1;
         System.out.println(RNGR);
-        if(RNGR==1){
-            handler.getWorld().getItemManager().addItem(Item.coin.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(3) +1)));
-        }
-        if(RNGR==2){
-            handler.getWorld().getItemManager().addItem(Item.oneup.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(1) +1)));
-        }
-        if(RNGR==3){
-            handler.getWorld().getItemManager().addItem(Item.mushroom.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(1) +1)));
-        }
+        handler.getWorld().getItemManager().addItem(Item.luigicap.createNew((int)x + bounds.x,(int)y + bounds.y,1));
 
     }
 }

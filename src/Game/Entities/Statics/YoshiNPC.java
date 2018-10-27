@@ -13,10 +13,10 @@ import Worlds.World1;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class PeachNPC extends StaticEntity {
+public class YoshiNPC extends StaticEntity {
 
 	//Phase 4
-	public static boolean questComplete1 = false;
+	public static boolean questComplete2 = false;
 	public static boolean coins3Delivered = false;
 	public static boolean key1Delivered = false;
 	public static int coinsneeded = 3;
@@ -27,8 +27,8 @@ public class PeachNPC extends StaticEntity {
 
     private BaseWorld world;
 
-    public PeachNPC(Handler handler, float x, float y,BaseWorld world) {
-        super(handler, x, y, 94, 48);
+    public YoshiNPC(Handler handler, float x, float y,BaseWorld world) {
+        super(handler, x, y, 84, 50);
         this.world=world;
         health=10000000;
         bounds.x=0;
@@ -62,7 +62,7 @@ public class PeachNPC extends StaticEntity {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Images.princesspeach[0],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
+        g.drawImage(Images.yoshi[0],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 
         g.setColor(Color.black);
         checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
@@ -123,7 +123,7 @@ public class PeachNPC extends StaticEntity {
 				}
 				
 				}
-				if (m.getName().equals("World-1 Key"))
+				if (m.getName().equals("World-2 Key"))
 				{
 					if (m.getCount() >= 1)
 					{
@@ -139,7 +139,7 @@ public class PeachNPC extends StaticEntity {
 				g.drawImage(Images.EP,(int) x+width,(int) y+10,32,32,null);
 				
 				System.out.println("Quest completed successful");
-				questComplete1 = true;
+				questComplete2 = true;
 				//handler.getWorld().getEntityManager().addEntity(new Koopa(handler, 100, 100));
 				//World1.setIsdoor(true);
 				

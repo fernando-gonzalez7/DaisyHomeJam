@@ -13,7 +13,7 @@ import java.util.Random;
 /**
  * Created by Elemental on 2/7/2017.
  */
-public class LuigiCompanion extends CreatureBase  {
+public class Bowser extends CreatureBase  {
 
 
     private Animation animDown, animUp, animLeft, animRight;
@@ -21,8 +21,8 @@ public class LuigiCompanion extends CreatureBase  {
     private Boolean attacking=false;
 
     private int animWalkingSpeed = 50;
-    private Inventory luigiinventory;
-    private Rectangle luigicam;
+    private Inventory chainchompinventory;
+    private Rectangle chainchompcam;
 
     private int healthcounter = 0;
 
@@ -30,30 +30,30 @@ public class LuigiCompanion extends CreatureBase  {
     private int moveCount = 0;
     private int direction;
 
-    public LuigiCompanion(Handler handler, float x, float y) {
-        super(handler, x, y, 86, 44);
+    public Bowser(Handler handler, float x, float y) {
+        super(handler, x, y, 138, 138);
         bounds.x=4;
-        bounds.y=43;
-        bounds.width=36;
-        bounds.height=43;
-        speed=this.speed*(float)1.0;;
-        health=45;
+        bounds.y=50;
+        bounds.width=131;
+        bounds.height=83;
+        speed=1.0f;
+        health=70;
 
-        luigicam= new Rectangle();
+        chainchompcam= new Rectangle();
 
 
 
         randint = new Random();
         direction = randint.nextInt(4) + 1;
 
-        animDown = new Animation(animWalkingSpeed, Images.luigi_front);
-        animLeft = new Animation(animWalkingSpeed,Images.luigi_left);
-        animRight = new Animation(animWalkingSpeed,Images.luigi_right);
-        animUp = new Animation(animWalkingSpeed,Images.luigi_back);
+        animDown = new Animation(animWalkingSpeed, Images.bowser_front);
+        animLeft = new Animation(animWalkingSpeed,Images.bowser_left);
+        animRight = new Animation(animWalkingSpeed,Images.bowser_right);
+        animUp = new Animation(animWalkingSpeed,Images.bowser_back);
         
         
 
-        luigiinventory= new Inventory(handler);
+        chainchompinventory= new Inventory(handler);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class LuigiCompanion extends CreatureBase  {
         }
 
 
-        luigiinventory.tick();
+        chainchompinventory.tick();
 
 
     }
@@ -94,13 +94,13 @@ public class LuigiCompanion extends CreatureBase  {
         xMove = 0;
         yMove = 0;
 
-        luigicam.x = (int) (x - handler.getGameCamera().getxOffset() - (64 * 3));
-        luigicam.y = (int) (y - handler.getGameCamera().getyOffset() - (64 * 3));
-        luigicam.width = 64 * 7;
-        luigicam.height = 64 * 7;
+        chainchompcam.x = (int) (x - handler.getGameCamera().getxOffset() - (64 * 3));
+        chainchompcam.y = (int) (y - handler.getGameCamera().getyOffset() - (64 * 3));
+        chainchompcam.width = 64 * 7;
+        chainchompcam.height = 64 * 7;
 
-        if (luigicam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset())
-                || luigicam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset() + handler.getWorld().getEntityManager().getPlayer().getWidth(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset() + handler.getWorld().getEntityManager().getPlayer().getHeight())) {
+        if (chainchompcam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset())
+                || chainchompcam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset() + handler.getWorld().getEntityManager().getPlayer().getWidth(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset() + handler.getWorld().getEntityManager().getPlayer().getHeight())) {
 
             Rectangle cb = getCollisionBounds(0, 0);
             Rectangle ar = new Rectangle();
@@ -125,7 +125,7 @@ public class LuigiCompanion extends CreatureBase  {
             for (EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
                 if (e.equals(this))
                     continue;
-                if (e.getCollisionBounds(0, 0).intersects(ar) && !(e.equals(handler.getWorld().getEntityManager().getPlayer()))) {
+                if (e.getCollisionBounds(0, 0).intersects(ar) && e.equals(handler.getWorld().getEntityManager().getPlayer())) {
 
                     checkAttacks();
                     return;
@@ -179,7 +179,7 @@ public class LuigiCompanion extends CreatureBase  {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight, Images.luigi_front,Images.luigi_back,Images.luigi_left,Images.luigi_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+        g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight, Images.bowser_front,Images.bowser_back,Images.bowser_left,Images.bowser_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
         if(isBeinghurt() && healthcounter<=120){
             g.setColor(Color.white);
             g.drawString("Health: " + getHealth(),(int) (x-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()-20));
@@ -192,7 +192,7 @@ public class LuigiCompanion extends CreatureBase  {
     @Override
     //THIS IS AN ITEM EXAMPLE
     public void die() {
-    	handler.getWorld().getItemManager().addItem(Item.world1key.createNew((int)x + bounds.x,(int)y + bounds.y,1));
+    	handler.getWorld().getItemManager().addItem(Item.world2key.createNew((int)x + bounds.x,(int)y + bounds.y,1));
 
     }
 }

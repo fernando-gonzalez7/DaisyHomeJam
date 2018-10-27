@@ -9,12 +9,17 @@ import Main.Handler;
 public class CaveWorld extends BaseWorld{
 	private Handler handler;
 	private Player player;
+	private BaseWorld world3;
 
 	public CaveWorld(Handler handler, String path, Player player) {
 		super(handler,path,player);
 		this.handler = handler;
 		this.player=player;
+		
+		world3 = new World3(handler,"res/Maps/map3.map",player);
 
+		entityManager.addEntity(new YoshiNPC(handler, 300, 0, world3));
+		entityManager.addEntity(new DoorW2(handler, 100, 0, world3));
 		entityManager.addEntity(new Rock(handler, 75, 370));
 		entityManager.addEntity(new ShortDesertPillar(handler, 425, 0));
 		entityManager.addEntity(new ShortDesertPillar(handler, 425, 275));
@@ -46,4 +51,18 @@ public class CaveWorld extends BaseWorld{
 		entityManager.addEntity(new QuestionBlockGrassless(handler, 650, 750));
 		entityManager.addEntity(new ChainChomp(handler, 1300, 1450));
 	}
+	
+	@Override
+	public void tick() {
+		entityManager.tick();
+		itemManager.tick();
+		
+		if (Player.luigisummon == true) {
+			entityManager.addEntity(new LuigiCompanion (handler, handler.getWorld().getEntityManager().getPlayer().getX()+30, 
+					handler.getWorld().getEntityManager().getPlayer().getY()+30));
+			Player.luigisummon = false;
+		}
+		
+	}
+
 }

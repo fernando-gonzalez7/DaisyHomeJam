@@ -37,7 +37,7 @@ public class ChainChomp extends CreatureBase  {
         bounds.width=96;
         bounds.height=88;
         speed=2.0f;
-        health=50;
+        health=40;
 
         chainchompcam= new Rectangle();
 
@@ -192,7 +192,7 @@ public class ChainChomp extends CreatureBase  {
     @Override
     //THIS IS AN ITEM EXAMPLE
     public void die() {
-    	handler.getWorld().getItemManager().addItem(Item.world1key.createNew((int)x + bounds.x,(int)y + bounds.y,1));
+    	handler.getWorld().getItemManager().addItem(Item.world2key.createNew((int)x + bounds.x,(int)y + bounds.y,1));
 
     }
 }

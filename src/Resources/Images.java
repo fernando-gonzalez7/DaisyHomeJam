@@ -39,6 +39,12 @@ public class Images {
 	public static BufferedImage[] luigi_front;
 	public static BufferedImage[] luigi_back;
 
+	//Bowser
+	public static BufferedImage[] bowser_right;
+	public static BufferedImage[] bowser_left;
+	public static BufferedImage[] bowser_front;
+	public static BufferedImage[] bowser_back;
+
 	//Goomba
 	public static BufferedImage[] goomba_right;
 	public static BufferedImage[] goomba_left;
@@ -65,6 +71,12 @@ public class Images {
 
 	//Princess Peach
 	public static BufferedImage[] princesspeach;
+	public static BufferedImage[] yoshi;
+
+	//Quest UI
+	//Box
+	public static BufferedImage quest1box;
+	public static BufferedImage[] questnumbers;
 
 	public static BufferedImage[] butstart;
 	public static BufferedImage[] particleSmoke;
@@ -90,6 +102,7 @@ public class Images {
 
 	public static BufferedImage[] fountain;
 	public static BufferedImage[] drystatue;
+	public static BufferedImage[] firepillar;
 
 
 	public Images() {
@@ -116,6 +129,11 @@ public class Images {
 		SpriteSheet chainchompsheet = new SpriteSheet(Images.loadImage("/Sheets/ChainChompSheet.png"));
 		SpriteSheet drybonessheet = new SpriteSheet(Images.loadImage("/Sheets/DryBonesSheet.png"));
 		SpriteSheet luigisheet = new SpriteSheet(Images.loadImage("/Sheets/LuigiSheet.png"));
+		SpriteSheet firepillarsheet = new SpriteSheet(Images.loadImage("/Sheets/FirePillar.png"));
+		SpriteSheet bowsertiles = new SpriteSheet(Images.loadImage("/Sheets/BowserTiles.png"));
+		SpriteSheet quest1sheet = new SpriteSheet(Images.loadImage("/Sheets/Quest1UI.png"));
+		SpriteSheet bowsersheet = new SpriteSheet(Images.loadImage("/Sheets/BowserSheet.png"));
+
 
 
 		blocks = new BufferedImage[256];
@@ -163,9 +181,16 @@ public class Images {
 		chain_front = new BufferedImage[4];
 		chain_back = new BufferedImage[4];
 
+		//Bowser
+		bowser_left = new BufferedImage[16];
+		bowser_right = new BufferedImage[16];
+		bowser_front = new BufferedImage[16];
+		bowser_back = new BufferedImage[16];
 
 		//Peach
 		princesspeach = new BufferedImage[4];
+
+		yoshi = new BufferedImage[4];
 
 		butstart = new BufferedImage[3];
 		particleSmoke = new BufferedImage[3];
@@ -181,12 +206,14 @@ public class Images {
 
 		drystatue = new BufferedImage[6];
 
+		firepillar = new BufferedImage[6];
+
 		FireBallLeft = new BufferedImage[6];
 		FireBallRight = new BufferedImage[6];
 		FireBallUp = new BufferedImage[6];
 		FireBallDown = new BufferedImage[6];
 
-
+		questnumbers = new BufferedImage[5];
 
 
 		try {
@@ -209,6 +236,8 @@ public class Images {
 			BTitle[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitleP.png"));
 			Options[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Options.png"));
 			Options[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/OptionsP.png"));
+
+
 
 			//icon
 			icon = new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/Sheets/MushroomIcon.png")));
@@ -274,7 +303,20 @@ public class Images {
 			items[5]= inventorysheet.crop(36,2,iwidth,iheight);   //1-Up (+Health)
 			items[6]= inventorysheet.crop(274,36,iwidth,iheight); //World 1 Key
 			items[7]= inventorysheet.crop(70,36,iwidth,iheight);  //Luigi Summon Item
+			items[8]= inventorysheet.crop(342,36,iwidth,iheight); //World 2 Key
 
+
+			//Quest
+			//Quest 1
+			quest1box = quest1sheet.crop(1, 1, 113, 83);
+
+			//Numbers
+
+			questnumbers[0] = quest1sheet.crop(116, 2, 24, 24);
+			questnumbers[1] = quest1sheet.crop(143, 2, 24, 24);
+			questnumbers[2] = quest1sheet.crop(170, 2, 24, 24);
+			questnumbers[3] = quest1sheet.crop(197, 2, 24, 24);
+			questnumbers[4] = quest1sheet.crop(170, 29, 24, 24);
 
 			//Updated Number Sprites
 			numbers[1]= numsheet.crop(2,2,32,22);
@@ -342,6 +384,11 @@ public class Images {
 			blocks[21] = deserttiles.crop(204,68,64,320);           //Long Desert Pillar	
 			blocks[22] = deserttiles.crop(200,2,Bwidth,Bheight);    //? Block (No Grass)
 
+			//Bowser World
+			blocks[23] = bowsertiles.crop(1,1,Bwidth,Bheight);       //Bowser Floor
+			blocks[24] = bowsertiles.crop(66,1,Bwidth,Bheight);     //Bowser Walls
+			blocks[25] = bowsertiles.crop(131,1,Bwidth,Bheight);    //Luigi Block
+			blocks[26] = ImageIO.read(getClass().getResourceAsStream("/Sheets/bowserlogo.png"));   //Logo  floor
 
 			//Fountain
 			fountain[0] = fountainsheet.crop(2,2,216,226);
@@ -356,6 +403,13 @@ public class Images {
 			drystatue[4] = drybonesstatue.crop(546,2,134,262);
 			drystatue[5] = drybonesstatue.crop(682,2,134,262);
 
+			//Fire Pillar
+			firepillar[0] = firepillarsheet.crop(2,2,124,370);
+			firepillar[1] = firepillarsheet.crop(128,2,124,370);
+			firepillar[2] = firepillarsheet.crop(254,2,124,370);
+			firepillar[3] = firepillarsheet.crop(380,2,124,370);
+			firepillar[4] = firepillarsheet.crop(506,2,124,370);
+			firepillar[5] = firepillarsheet.crop(632,2,124,370);
 
 			//Mario Animations
 			player_front[0]=mariorun.crop(2,2,width,height);
@@ -497,6 +551,75 @@ public class Images {
 			chain_back[2]=chainchompsheet.crop(198,272,96,88);
 			chain_back[3]=chainchompsheet.crop(296,272,96,88);
 
+			//Bowser
+			bowser_front[0]=bowsersheet.crop(2,2,138,138);
+			bowser_front[1]=bowsersheet.crop(142,2,138,138);
+			bowser_front[2]=bowsersheet.crop(282,2,138,138);
+			bowser_front[3]=bowsersheet.crop(422,2,138,138);
+			bowser_front[4]=bowsersheet.crop(562,2,138,138);
+			bowser_front[5]=bowsersheet.crop(702,2,138,138);
+			bowser_front[6]=bowsersheet.crop(842,2,138,138);
+			bowser_front[7]=bowsersheet.crop(982,2,138,138);
+			bowser_front[8]=bowsersheet.crop(1122,2,138,138);
+			bowser_front[9]=bowsersheet.crop(1262,2,138,138);
+			bowser_front[10]=bowsersheet.crop(1402,2,138,138);
+			bowser_front[11]=bowsersheet.crop(1542,2,138,138);
+			bowser_front[12]=bowsersheet.crop(1682,2,138,138);
+			bowser_front[13]=bowsersheet.crop(1822,2,138,138);
+			bowser_front[14]=bowsersheet.crop(1962,2,138,138);
+			bowser_front[15]=bowsersheet.crop(2102,2,138,138);
+			
+			bowser_left[0]=bowsersheet.crop(2,142,138,138);
+			bowser_left[1]=bowsersheet.crop(142,142,138,138);
+			bowser_left[2]=bowsersheet.crop(282,142,138,138);
+			bowser_left[3]=bowsersheet.crop(422,142,138,138);
+			bowser_left[4]=bowsersheet.crop(562,142,138,138);
+			bowser_left[5]=bowsersheet.crop(702,142,138,138);
+			bowser_left[6]=bowsersheet.crop(842,142,138,138);
+			bowser_left[7]=bowsersheet.crop(982,142,138,138);
+			bowser_left[8]=bowsersheet.crop(1122,142,138,138);
+			bowser_left[9]=bowsersheet.crop(1262,142,138,138);
+			bowser_left[10]=bowsersheet.crop(1402,142,138,138);
+			bowser_left[11]=bowsersheet.crop(1542,142,138,138);
+			bowser_left[12]=bowsersheet.crop(1682,142,138,138);
+			bowser_left[13]=bowsersheet.crop(1822,142,138,138);
+			bowser_left[14]=bowsersheet.crop(1962,142,138,138);
+			bowser_left[15]=bowsersheet.crop(2102,142,138,138);
+			
+			bowser_right[0]=bowsersheet.crop(2,282,138,138);
+			bowser_right[1]=bowsersheet.crop(142,282,138,138);
+			bowser_right[2]=bowsersheet.crop(282,282,138,138);
+			bowser_right[3]=bowsersheet.crop(422,282,138,138);
+			bowser_right[4]=bowsersheet.crop(562,282,138,138);
+			bowser_right[5]=bowsersheet.crop(702,282,138,138);
+			bowser_right[6]=bowsersheet.crop(842,282,138,138);
+			bowser_right[7]=bowsersheet.crop(982,282,138,138);
+			bowser_right[8]=bowsersheet.crop(1122,282,138,138);
+			bowser_right[9]=bowsersheet.crop(1262,282,138,138);
+			bowser_right[10]=bowsersheet.crop(1402,282,138,138);
+			bowser_right[11]=bowsersheet.crop(1542,282,138,138);
+			bowser_right[12]=bowsersheet.crop(1682,282,138,138);
+			bowser_right[13]=bowsersheet.crop(1822,282,138,138);
+			bowser_right[14]=bowsersheet.crop(1962,282,138,138);
+			bowser_right[15]=bowsersheet.crop(2102,282,138,138);
+			
+			bowser_back[0]=bowsersheet.crop(2,422,138,138);
+			bowser_back[1]=bowsersheet.crop(142,422,138,138);
+			bowser_back[2]=bowsersheet.crop(282,422,138,138);
+			bowser_back[3]=bowsersheet.crop(422,422,138,138);
+			bowser_back[4]=bowsersheet.crop(562,422,138,138);
+			bowser_back[5]=bowsersheet.crop(702,422,138,138);
+			bowser_back[6]=bowsersheet.crop(842,422,138,138);
+			bowser_back[7]=bowsersheet.crop(982,422,138,138);
+			bowser_back[8]=bowsersheet.crop(1122,422,138,138);
+			bowser_back[9]=bowsersheet.crop(1262,422,138,138);
+			bowser_back[10]=bowsersheet.crop(1402,422,138,138);
+			bowser_back[11]=bowsersheet.crop(1542,422,138,138);
+			bowser_back[12]=bowsersheet.crop(1682,422,138,138);
+			bowser_back[13]=bowsersheet.crop(1822,422,138,138);
+			bowser_back[14]=bowsersheet.crop(1962,422,138,138);
+			bowser_back[15]=bowsersheet.crop(2102,422,138,138);
+			
 			//Dry Bones
 			drybones_front[0]=drybonessheet.crop(2,2,46,74);
 			drybones_front[1]=drybonessheet.crop(50,2,46,74);
@@ -542,7 +665,10 @@ public class Images {
 			princesspeach[1]=npcsheet.crop(52,2,48,94);  //Left
 			princesspeach[2]=npcsheet.crop(102,2,48,94); //Back
 			princesspeach[3]=npcsheet.crop(152,2,48,94); //Right
-			
+
+			//Yoshi
+			yoshi[0]=npcsheet.crop(2,98,50,84);
+
 			//Luigi
 			luigi_front[0]=luigisheet.crop(2,2,44,86);
 			luigi_front[1]=luigisheet.crop(48,2,44,86);
@@ -552,7 +678,7 @@ public class Images {
 			luigi_front[5]=luigisheet.crop(232,2,44,86);
 			luigi_front[6]=luigisheet.crop(278,2,44,86);
 			luigi_front[7]=luigisheet.crop(324,2,44,86);
-			
+
 			luigi_left[0]=luigisheet.crop(2,90,44,86);
 			luigi_left[1]=luigisheet.crop(48,90,44,86);
 			luigi_left[2]=luigisheet.crop(94,90,44,86);
@@ -570,7 +696,7 @@ public class Images {
 			luigi_right[5]=luigisheet.crop(232,178,44,86);
 			luigi_right[6]=luigisheet.crop(278,178,44,86);
 			luigi_right[7]=luigisheet.crop(324,178,44,86);
-			
+
 			luigi_back[0]=luigisheet.crop(2,266,44,86);
 			luigi_back[1]=luigisheet.crop(48,266,44,86);
 			luigi_back[2]=luigisheet.crop(94,266,44,86);

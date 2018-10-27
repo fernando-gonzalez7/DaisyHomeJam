@@ -80,7 +80,7 @@ public class QuestionBlockGrassless extends StaticEntity {
         randint=new Random();
         RNGR=randint.nextInt(3) + 1;
         System.out.println(RNGR);
-        handler.getWorld().getItemManager().addItem(Item.rockItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
+       
         if(RNGR==1){
             handler.getWorld().getItemManager().addItem(Item.coin.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(3) +1)));
         }
