@@ -21,7 +21,7 @@ public class CaveWorld extends BaseWorld{
 		entityManager.addEntity(new YoshiNPC(handler, 300, 0, world3));
 		entityManager.addEntity(new DoorW2(handler, 100, 0, world3));
 		entityManager.addEntity(new Rock(handler, 75, 370));
-		entityManager.addEntity(new ShortDesertPillar(handler, 425, 0));
+		//entityManager.addEntity(new ShortDesertPillar(handler, 425, 0));
 		entityManager.addEntity(new ShortDesertPillar(handler, 425, 275));
 		entityManager.addEntity(new Cactus(handler, 693, 95));
 		entityManager.addEntity(new ShortDesertPillar(handler, 1050, 0));

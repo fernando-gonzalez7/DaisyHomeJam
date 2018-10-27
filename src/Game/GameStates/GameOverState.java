@@ -48,7 +48,7 @@ public class GameOverState extends State {
 //	TODO Change the image
     @Override
     public void render(Graphics g) {
-        g.drawImage(Images.Pause,0,0,800,600,null);
+        g.drawImage(Images.GameOver,0,0,800,600,null);
         uiManager.Render(g);
 
     }

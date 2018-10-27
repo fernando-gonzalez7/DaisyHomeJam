@@ -14,6 +14,16 @@ import Main.Handler;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  * Created by Elemental on 1/1/2017.
@@ -34,6 +44,13 @@ public class Player extends CreatureBase {
 	boolean NoItems = true;
 
 	private SpellCastUI spellGUI;
+	
+	  private File audioFile;
+	    private AudioInputStream audioStream;
+	    private AudioFormat format;
+	    private DataLine.Info info;
+	    private Clip audioClip;
+
 
 	private int fcounter = 0;
 	private Boolean fcactive=true;
@@ -261,7 +278,24 @@ public class Player extends CreatureBase {
 	public void die(){
 		System.out.println("You lose");
 		State.setState(handler.getGame().gameOverState);
-	}
+		 try {
+             audioFile = new File("res/music/mario-oof.wav");
+             audioStream = AudioSystem.getAudioInputStream(audioFile);
+             format = audioStream.getFormat();
+             info = new DataLine.Info(Clip.class, format);
+             audioClip = (Clip) AudioSystem.getLine(info);
+	            audioClip.open(audioStream);
+	            audioClip.loop(0);
+
+         } catch (UnsupportedAudioFileException e) {
+             e.printStackTrace();
+         } catch (IOException e) {
+             e.printStackTrace();
+         } catch (LineUnavailableException e) {
+             e.printStackTrace();
+         }
+     }
+
 
 	//World Debug variable
     int currentWorld = 1;
@@ -368,6 +402,7 @@ public class Player extends CreatureBase {
 				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.world1key);
 				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.luigicap);
 				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.world2key);
+				handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(Item.world3key);
 
 				NoItems = false;
 			}

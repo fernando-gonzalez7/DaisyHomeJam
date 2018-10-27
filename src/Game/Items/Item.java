@@ -36,6 +36,7 @@ public class Item {
     public static Item world1key = new Item(Images.items[6],"World-1 Key",6);
     public static Item luigicap = new Item(Images.items[7],"Luigi Cap",7);
     public static Item world2key = new Item(Images.items[8],"World-2 Key",8);
+    public static Item world3key = new Item(Images.items[9],"World-3 Key",9);
     
     
    // public static Item iceRuneItem = new Item(Images.Runes[3],"Fire Rune",3);

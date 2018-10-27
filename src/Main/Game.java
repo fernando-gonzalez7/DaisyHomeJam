@@ -100,7 +100,7 @@ public class Game implements Runnable {
         State.setState(menuState);
 
         try {
-            audioFile = new File("res/music/PeachCastle.wav");
+            audioFile = new File("res/music/PeachMusic.wav");
             audioStream = AudioSystem.getAudioInputStream(audioFile);
             format = audioStream.getFormat();
             info = new DataLine.Info(Clip.class, format);

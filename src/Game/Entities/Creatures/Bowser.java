@@ -192,7 +192,7 @@ public class Bowser extends CreatureBase  {
     @Override
     //THIS IS AN ITEM EXAMPLE
     public void die() {
-    	handler.getWorld().getItemManager().addItem(Item.world2key.createNew((int)x + bounds.x,(int)y + bounds.y,1));
+    	handler.getWorld().getItemManager().addItem(Item.world3key.createNew((int)x + bounds.x,(int)y + bounds.y,1));
 
     }
 }

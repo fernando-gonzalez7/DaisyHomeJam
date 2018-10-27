@@ -72,10 +72,11 @@ public class Images {
 	//Princess Peach
 	public static BufferedImage[] princesspeach;
 	public static BufferedImage[] yoshi;
+	public static BufferedImage[] toad;
 
 	//Quest UI
 	//Box
-	public static BufferedImage quest1box;
+	public static BufferedImage[]questbox;
 	public static BufferedImage[] questnumbers;
 
 	public static BufferedImage[] butstart;
@@ -88,6 +89,8 @@ public class Images {
 	public static BufferedImage E;
 	public static BufferedImage EP;
 	public static BufferedImage Pause;
+	public static BufferedImage GameOver;
+	public static BufferedImage Victory;
 	public static BufferedImage[] Resume;
 	public static BufferedImage[] BTitle;
 	public static BufferedImage[] Options;
@@ -133,7 +136,8 @@ public class Images {
 		SpriteSheet bowsertiles = new SpriteSheet(Images.loadImage("/Sheets/BowserTiles.png"));
 		SpriteSheet quest1sheet = new SpriteSheet(Images.loadImage("/Sheets/Quest1UI.png"));
 		SpriteSheet bowsersheet = new SpriteSheet(Images.loadImage("/Sheets/BowserSheet.png"));
-
+		SpriteSheet quest2sheet = new SpriteSheet(Images.loadImage("/Sheets/Quest2UI.png"));
+		SpriteSheet quest3sheet = new SpriteSheet(Images.loadImage("/Sheets/Quest3UI.png"));
 
 
 		blocks = new BufferedImage[256];
@@ -191,6 +195,7 @@ public class Images {
 		princesspeach = new BufferedImage[4];
 
 		yoshi = new BufferedImage[4];
+		toad = new BufferedImage[4];
 
 		butstart = new BufferedImage[3];
 		particleSmoke = new BufferedImage[3];
@@ -214,6 +219,7 @@ public class Images {
 		FireBallDown = new BufferedImage[6];
 
 		questnumbers = new BufferedImage[5];
+		questbox = new BufferedImage[3];
 
 
 		try {
@@ -222,14 +228,14 @@ public class Images {
 			spellGUI = ImageIO.read(getClass().getResourceAsStream("/Sheets/SpellGUI.png"));
 
 			inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));
-			title = ImageIO.read(getClass().getResourceAsStream("/Sheets/NewMenu.png"));
+			title = ImageIO.read(getClass().getResourceAsStream("/Sheets/MenuState.png"));
 
 			//New Door
 			door = peachtiles.crop(2,216,80,84);
 
 			E = ImageIO.read(getClass().getResourceAsStream("/Buttons/E.png"));
 			EP = ImageIO.read(getClass().getResourceAsStream("/Buttons/EP.png"));
-			Pause = ImageIO.read(getClass().getResourceAsStream("/Buttons/Pause.png"));
+			Pause = ImageIO.read(getClass().getResourceAsStream("/Sheets/PauseState.png"));
 			Resume[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Resume.png"));
 			Resume[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/ResumeP.png"));
 			BTitle[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitle.png"));
@@ -237,6 +243,8 @@ public class Images {
 			Options[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Options.png"));
 			Options[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/OptionsP.png"));
 
+			GameOver = ImageIO.read(getClass().getResourceAsStream("/Sheets/GameOverState.png"));
+			Victory = ImageIO.read(getClass().getResourceAsStream("/Sheets/VictoryState.png"));
 
 
 			//icon
@@ -304,11 +312,14 @@ public class Images {
 			items[6]= inventorysheet.crop(274,36,iwidth,iheight); //World 1 Key
 			items[7]= inventorysheet.crop(70,36,iwidth,iheight);  //Luigi Summon Item
 			items[8]= inventorysheet.crop(342,36,iwidth,iheight); //World 2 Key
+			items[9]= inventorysheet.crop(308,2,iwidth,iheight);  //World 3 Key
 
 
 			//Quest
 			//Quest 1
-			quest1box = quest1sheet.crop(1, 1, 113, 83);
+			questbox[0] = quest1sheet.crop(1, 1, 113, 83);
+			questbox[1] = quest2sheet.crop(1, 1, 113, 83);
+			questbox[2] = quest3sheet.crop(1, 1, 113, 83);
 
 			//Numbers
 
@@ -668,6 +679,8 @@ public class Images {
 
 			//Yoshi
 			yoshi[0]=npcsheet.crop(2,98,50,84);
+			
+			toad[0]=npcsheet.crop(2,184,36,54);
 
 			//Luigi
 			luigi_front[0]=luigisheet.crop(2,2,44,86);

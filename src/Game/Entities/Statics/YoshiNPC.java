@@ -78,7 +78,7 @@ public class YoshiNPC extends StaticEntity {
         //If E is not pressed display that an action is available
         if(ir.contains(pr) && !EP)
         {
-            g.drawImage(Images.quest1box,(int) x+width+10,(int) y+10,113,83,null);
+            g.drawImage(Images.questbox[1],(int) x+width+10,(int) y+10,113,83,null);
          if (coinsneeded == 3) {
         	 g.drawImage(Images.questnumbers[3],(int) x+132,(int) y+22,24,24,null);
          }

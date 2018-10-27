@@ -11,16 +11,25 @@ import Resources.Images;
 public class World3 extends BaseWorld{
 	private Handler handler;
 	private Player player;
+	private BaseWorld world3;
 
 	public World3(Handler handler, String path, Player player) {
 		super(handler,path,player);
 		this.handler = handler;
 		this.player=player;
-
+		
 		//Stuff in the World go here
-		entityManager.addEntity(new FirePillar(handler, 500, 500));
+		entityManager.addEntity(new FirePillar(handler, 90, 520));
+		entityManager.addEntity(new FirePillar(handler, 760, 520));
+		entityManager.addEntity(new FirePillar(handler, 90, 125));
+		entityManager.addEntity(new FirePillar(handler, 760, 125));
 		entityManager.addEntity(new LuigiBlock(handler, 600, 100));
-		entityManager.addEntity(new Bowser(handler, 300, 300));
+		entityManager.addEntity(new QuestionBlockGrassless(handler, 250, 375));
+		entityManager.addEntity(new QuestionBlockGrassless(handler, 600, 375));
+		entityManager.addEntity(new QuestionBlockGrassless(handler, 250, 750));
+		entityManager.addEntity(new QuestionBlockGrassless(handler, 600, 750));
+		entityManager.addEntity(new Bowser(handler, 350, 600));
+		entityManager.addEntity(new ToadNPC(handler, 100, 0,world3));
 		
 		
 
