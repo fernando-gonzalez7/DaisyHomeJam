@@ -20,7 +20,7 @@ public class DryBones extends CreatureBase  {
 
     private Boolean attacking=false;
 
-    private int animWalkingSpeed = 50;
+    private int animWalkingSpeed = 60;
     private Inventory drybonesinventory;
     private Rectangle drybonescam;
 
